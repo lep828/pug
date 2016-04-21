@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:id])
   end
 
   def new
@@ -22,17 +23,24 @@ class GroupsController < ApplicationController
       redirect_to groups_path
     else 
       render "new"
-    end 
+    end
   end
 
-  def delete
+  def destroy
   end
 
   def update
+    @group = Group.update_attributes(group_params)
+    if @group.save
+      flash[:success] = "Your group has now been updated!"
+      redirect_to groups_path
+    else 
+      render "new"
+    end
   end
 
-  private 
-    def group_params
-      params.require(:group).permit(:name, :description, :image)
-    end
+  private
+  def group_params
+    params.require(:group).permit(:name, :description, :image)
+  end
 end
