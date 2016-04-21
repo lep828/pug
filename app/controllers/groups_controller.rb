@@ -26,6 +26,8 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    @group.destroy
+    flash[:info] = "You have disbanded the group."
   end
 
   def update
