@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+  <%= render 'header' %>
   <% flash.each do |name, message| %>
     <div class="flash-message flash-message-<%= name %>">
       <%= message %>
