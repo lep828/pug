@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+
   def index
     @groups = Group.all
   end
@@ -11,9 +12,17 @@ class GroupsController < ApplicationController
   end
 
   def new
+    @group = Group.new
   end
 
   def create
+    @group = Group.new(group_params)
+    if @group.save
+      flash[:success] = "Your group has now been listed!"
+      redirect_to groups_path
+    else 
+      render "new"
+    end 
   end
 
   def delete
@@ -21,4 +30,9 @@ class GroupsController < ApplicationController
 
   def update
   end
+
+  private 
+    def group_params
+      params.require(:group).permit(:name, :description, :image)
+    end
 end
