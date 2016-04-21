@@ -1,15 +1,14 @@
 class GroupsController < ApplicationController
+  before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   def index
     @groups = Group.all
   end
 
   def show
-    @group = Group.find(params[:id])
   end
 
   def edit
-    @group = Group.find(params[:id])
   end
 
   def new
@@ -30,16 +29,19 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.update_attributes(group_params)
-    if @group.save
-      flash[:success] = "Your group has now been updated!"
+    if @group.update(group_params)
+      flash[:success] = "You have edited the group."
       redirect_to groups_path
-    else 
-      render "new"
+    else
+      render "edit"
     end
   end
 
   private
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
   def group_params
     params.require(:group).permit(:name, :description, :image)
   end
