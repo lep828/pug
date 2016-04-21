@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     flash[:info] = "You have disbanded the group."
+    redirect_to groups_path
   end
 
   def update
