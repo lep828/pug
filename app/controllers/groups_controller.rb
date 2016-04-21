@@ -1,4 +1,4 @@
-class GroupController < ApplicationController
+class GroupsController < ApplicationController
   def index
     @groups = Group.all
   end
@@ -13,12 +13,12 @@ class GroupController < ApplicationController
   def new
   end
 
-  def update
+  def create
   end
 
   def delete
   end
 
-  def create
+  def update
   end
 end
