@@ -1,2 +1,10 @@
 <h1>Groups#show</h1>
 <p>Find me in app/views/groups/show.html.erb</p>
+
+<% @group.subscribers.each do |subscriber| %>
+<ul>
+  <li><img src="<%= User.find(subscriber.user_id).image %>"></li>
+  <li><%= User.find(subscriber.user_id).username %></li>
+  <li><%= User.find(subscriber.user_id).description %></li>
+</ul>
+<% end %>
