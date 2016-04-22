@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.creator_id = current_user.id
     if @group.save
-      @group.subscribers.create!(group_id: @group.id, user_id: current_user.id, admin: true)
+      @group.subscribers.create!(user_id: current_user.id, admin: true)
       flash[:success] = "Your group has now been listed!"
       redirect_to groups_path
     else 
