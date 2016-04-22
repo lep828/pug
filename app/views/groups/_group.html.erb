@@ -2,6 +2,7 @@
   <ul>
     <img src="<%= group.image %>">
     <li><%= group.name %></li>
+    <li><%= User.find(group.creator_id).username %></li>
     <li><%= group.description %></li>
     <li><%= link_to "Show", group %></li>
     <li><%= link_to "Edit", edit_group_path(group) %></li>
