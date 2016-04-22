@@ -6,11 +6,7 @@
     <li><%= group.description %></li>
     <li>Created: <%= distance_of_time_in_words(Time.now, group.created_at) %> ago</li>
     <li><%= link_to "Show", group %></li>
-
-    <%= form_for group do |f| %>
-      <li><%= link_to "Join!", group_subscribers_path(group), method: :post %></li>
-    <% end %>
-
+    <li><%= link_to "Join!", group_subscribers_path(group), method: :post %></li>
     <li><%= link_to "Edit", edit_group_path(group) %></li>
     <li><%= link_to "Disband", group, method: :delete %></li>
   </ul>

@@ -11,7 +11,7 @@ class SubscribersController < ApplicationController
       flash[:success] = "You have joined #{@group.name}!"
       redirect_to group_path(id: @group.id)
     else
-      flash[:alert] = "You have failed to join #{@group.name}"
+      flash[:alert] = "You are already apart of #{@group.name}"
       redirect_to group_path(id: @group.id)
     end
   end
