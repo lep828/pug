@@ -4,9 +4,8 @@ class SubscribersController < ApplicationController
     @group = Group.find(params[:group_id])
     @subscriber = @group.subscribers.new
     @subscriber.user_id = current_user.id
-    @subscriber.admin = false
-    p @subscriber
-
+    @subscriber.admin = false if @subscriber.admin = nil
+        
     if @subscriber.save
       flash[:success] = "You have joined #{@group.name}!"
       redirect_to group_path(id: @group.id)
@@ -19,8 +18,4 @@ class SubscribersController < ApplicationController
   def destroy
   end
 
-  # private
-  #   def subscriber_params
-  #     params.require(:subscriber).permit(:group_id, :user_id, :admin)
-  #   end
 end
