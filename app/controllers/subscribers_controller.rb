@@ -1,20 +1,17 @@
 class SubscribersController < ApplicationController
-  def new
-    @group = Group.find(params[:group_id])
-    @subscriber = Subscriber.new
-  end
 
   def create
     @group = Group.find(params[:group_id])
+    subscriber_params.group_id = @group.id
     @subscriber = @group.subscribers.new(subscriber_params)
     @subscriber.user_id = current_user.id
 
     if @subscriber.save
       flash[:success] = "You have joined #{@group.name}!"
-      redirect_to groups_path
+      redirect_to group_path
     else
       flash[:alert] = "You have failed to join #{@group.name}"
-      redirect_to groups_path
+      redirect_to group_path
     end
   end
 

@@ -6,4 +6,9 @@ u1 = User.create!(username: "peter", email: "peter@peter.com", image: "https://w
 
 u2 = User.create!(username: "peter2", email: "peter@peter2.com", image: "https://www.fillmurray.com/450/450", description: "goat", password: "password")
 
+u3 = User.create!(username: "peter3", email: "peter@peter3.com", image: "https://www.fillmurray.com/350/350", description: "goat3", password: "password")
+
 g1 = Group.create!(name: "hey", description: "we the greatest.", image: "https://www.fillmurray.com/300/300", creator_id: u1.id)
+
+Subscriber.create!(group_id: g1.id, user_id: u2.id)
+Subscriber.create!(group_id: g1.id, user_id: u3.id)

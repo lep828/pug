@@ -1,10 +1,17 @@
 <li>
   <ul>
     <img src="<%= group.image %>">
-    <li><%= group.name %></li>
-    <li><%= User.find(group.creator_id).username %></li>
+    <li>Group: <%= group.name %></li>
+    <li>Owner: <%= User.find(group.creator_id).username %></li>
     <li><%= group.description %></li>
+    <% group.subscribers.each do |subscriber| %>
+      <li><%= User.find(subscriber.user_id).username %></li>
+    <% end %>
+    <li>Created: <%= distance_of_time_in_words(Time.now, group.created_at) %> ago</li>
     <li><%= link_to "Show", group %></li>
+
+    <li><%= link_to "Join!", group_subscribers_path(group), method: :post %></li>
+
     <li><%= link_to "Edit", edit_group_path(group) %></li>
     <li><%= link_to "Disband", group, method: :delete %></li>
   </ul>
