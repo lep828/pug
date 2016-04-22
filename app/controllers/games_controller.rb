@@ -32,6 +32,12 @@ class GamesController < ApplicationController
   end
 
   def update
+    if @game.update(game_params)
+      flash[:success] = "You have edited #{@game.name}."
+      redirect_to games_path
+    else
+      render "edit"
+    end
   end
 
   private
