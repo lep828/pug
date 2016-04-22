@@ -3,5 +3,7 @@
     <img src="<%= user.image %>"> 
     <li><%= user.username %></li>
     <li><%= user.description %></li>
+    <li><%= link_to "Show", user %></li>
+    <li><%= link_to "Edit", edit_user_registration_path(user) %></li>
   </ul>
 </li>
