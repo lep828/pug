@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  has_and_belongs_to_many :groups
+  # has_and_belongs_to_many :groups, depend: :destroy
 
   validates :name, presence: true, uniqueness: true
   validates :name, length: { in: 4..20 }

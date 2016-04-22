@@ -1,0 +1,11 @@
+<li>
+  <ul>
+    <img src="<%= game.image %>">
+    <li>Title: <%= game.name %></li>
+    <li><%= game.description %></li>
+    <li>Added: <%= distance_of_time_in_words(Time.now, game.created_at) %> ago</li>
+    <li><%= link_to "Show", game %></li>
+    <li><%= link_to "Edit Game", edit_game_path(game) %></li>
+    <li><%= link_to "Remove Game", game, method: :delete %></li>
+  </ul>
+</li>
