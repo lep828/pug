@@ -5,7 +5,7 @@
     <% elsif user.image.present? %>
       <%= image_tag user.image  %>
     <% else %>
-      <%= image_tag('DefaultUserPic.png') %>
+      <%= image_tag 'DefaultUserPic.png' %>
     <% end %>
     <li><%= user.username %></li>
     <li><%= user.description %></li>
