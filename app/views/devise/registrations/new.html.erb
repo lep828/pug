@@ -19,6 +19,12 @@
   </div>
 
   <div class="field">
+    <%= f.label :user_image %><br />
+    <%= f.file_field :user_image %>
+    <%= f.hidden_field :user_image_cache %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email %>
   </div>
