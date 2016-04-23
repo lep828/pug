@@ -6,6 +6,6 @@
   <li><img src="<%= User.find(subscriber.user_id).image %>"></li>
   <li><%= User.find(subscriber.user_id).username %></li>
   <li><%= User.find(subscriber.user_id).description %></li>
-  <li><%= subscriber.admin %></li>
+  <li>Admin: <%= subscriber.admin %></li>
 </ul>
 <% end %>
