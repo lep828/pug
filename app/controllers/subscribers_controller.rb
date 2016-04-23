@@ -2,9 +2,7 @@ class SubscribersController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    @subscriber = @group.subscribers.new
-    @subscriber.user_id = current_user.id
-    @subscriber.admin = false if @subscriber.admin = nil
+    @subscriber = @group.subscribers.new(user_id: current_user.id, admin: false)
         
     if @subscriber.save
       flash[:success] = "You have joined #{@group.name}!"

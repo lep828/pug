@@ -1,8 +1,8 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<h1><%= @group.name %></h1>
 
 <% @group.subscribers.each do |subscriber| %>
 <% user = User.find(subscriber.user_id) %>
+<%= subscriber.inspect %>
 <ul>
   <li>
   <% if user.user_image.present? %>
