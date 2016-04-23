@@ -1,15 +1,35 @@
 <header>
-  <nav>
-    <ul>
-      <% if user_signed_in? %>
-      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-      <li><%= link_to "Users", users_path %></li>
-      <li><%= link_to "Groups", groups_path %></li>
-      <li><%= link_to "Games", games_path %></li>
-      <% else %>
-      <li><%= link_to "Register", new_user_registration_path %></li>
-      <li><%= link_to "Login", new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </nav>
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+      <nav class="tab-bar">
+        <section class="left-small">
+          <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+        </section>
+
+        <section class="middle tab-bar-section">
+          <h1 class="title">P.U.G</h1>
+        </section>
+
+      </nav>
+
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <% if user_signed_in? %>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "Users", users_path %></li>
+            <li><%= link_to "Groups", groups_path %></li>
+            <li><%= link_to "Games", games_path %></li>
+          <% else %>
+            <li><%= link_to "Register", new_user_registration_path %></li>
+            <li><%= link_to "Login", new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </aside>
+
+      <%= render 'content' %>
+
+      <a class="exit-off-canvas"></a>
+
+    </div>
+  </div>
 </header>
