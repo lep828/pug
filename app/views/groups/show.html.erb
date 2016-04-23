@@ -2,10 +2,19 @@
 <p>Find me in app/views/groups/show.html.erb</p>
 
 <% @group.subscribers.each do |subscriber| %>
+<% user = User.find(subscriber.user_id) %>
 <ul>
-  <li><img src="<%= User.find(subscriber.user_id).image %>"></li>
-  <li><%= User.find(subscriber.user_id).username %></li>
-  <li><%= User.find(subscriber.user_id).description %></li>
+  <li>
+  <% if user.user_image.present? %>
+    <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
+  <% elsif user.image.present? %>
+    <%= image_tag user.image  %>
+  <% else %>
+    <%= image_tag 'DefaultUserPic.png' %>
+  <% end %>
+  </li>
+  <li><%= user.username %></li>
+  <li><%= user.description %></li>
   <li>Admin: <%= subscriber.admin %></li>
 </ul>
 <% end %>

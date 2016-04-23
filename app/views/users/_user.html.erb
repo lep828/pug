@@ -1,7 +1,7 @@
 <li>
   <ul>
     <% if user.user_image.present? %>
-      <%= image_tag user.user_image.url %>
+      <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
     <% elsif user.image.present? %>
       <%= image_tag user.image  %>
     <% else %>
