@@ -1,6 +1,6 @@
 <section class="main-section">
   <% flash.each do |name, message| %>
-  <div class="alert alert-<%= name %> alert-box" data-alert>
+  <div class="<%= name %> alert-<%= name %> alert-box" role="alert" data-alert>
     <%= message %>
     <a href="#" class="close">&times;</a>
   </div>

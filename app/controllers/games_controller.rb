@@ -41,7 +41,8 @@ class GamesController < ApplicationController
   end
 
   def add
-    @group = Group.find(params[:group_id])
+    @group = Group.find(params[:id])
+    raise params.inspect
     @game = Game.find(:id)
     if @group.games.create!(game_params)
       flash[:success] = "You have added #{@game.name} to #{@group.name}"
