@@ -6,17 +6,19 @@
   <li class="accordion-navigation">
   <a href="#panel<%= index %>a"><%= user.username %></a>
     <div id="panel<%= index %>a" class="content">
+      <div class="subscriber-image">
       <% if user.user_image.present? %>
       <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
       <% else %>
       <%= image_tag 'DefaultUserPic.png' %>
       <% end %>
+      </div>
       <p><%= user.description %></p>
+      <a href="/users/<%= user.id %>">Show</a>
     </div>
   </li>
   <% end %>
 </ul>
-
 
 <% @group.games.each do |game| %>
 <ul>

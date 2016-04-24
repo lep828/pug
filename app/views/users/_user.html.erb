@@ -1,13 +1,13 @@
-<li>
-  <ul>
-    <% if user.user_image.present? %>
-      <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
-    <% else %>
-      <%= image_tag 'DefaultUserPic.png' %>
-    <% end %>
-    <li><%= user.username %></li>
-    <li><%= user.description %></li>
-    <li><%= link_to "Show", user %></li>
-    <li><%= link_to "Edit", edit_user_registration_path(user) %></li>
-  </ul>
-</li>
+<div class="medium-4 columns panel" data-equalizer-watch>
+  <div class="user-image">
+  <% if user.user_image.present? %>
+    <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
+  <% else %>
+    <%= image_tag 'DefaultUserPic.png' %>
+  <% end %>
+  </div>
+  <li><%= user.username %></li>
+  <li><%= user.description %></li>
+  <li><%= link_to "Show", user %></li>
+  <li><%= link_to "Edit", edit_user_registration_path(user) %></li>
+</div>
