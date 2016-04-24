@@ -11,6 +11,7 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "vendor/modernizr" %>
   <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 
 </head>
@@ -18,5 +19,13 @@
 
   <%= render 'header' %>
 
+  <footer class="row">
+    <section class="medium-4 columns">
+      Copyright 2013
+    </section>
+    <section class="medium-8 columns">
+      All rights reserved.
+    </section>
+  </footer>
 </body>
 </html>

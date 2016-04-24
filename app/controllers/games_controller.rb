@@ -40,6 +40,18 @@ class GamesController < ApplicationController
     end
   end
 
+  def add
+    @group = Group.find(params[:group_id])
+    @game = Game.find(:id)
+    if @group.games.create!(game_params)
+      flash[:success] = "You have added #{@game.name} to #{@group.name}"
+      redirect_to group_path
+    else
+      flash[:info] = "Something went wrong try again."
+      redirect_to games_path
+    end
+  end
+
   private
     def set_game
       @game = Game.find(params[:id])

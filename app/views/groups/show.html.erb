@@ -1,20 +1,29 @@
 <h1><%= @group.name %></h1>
 
-<% @group.subscribers.each do |subscriber| %>
-<% user = User.find(subscriber.user_id) %>
-<%= subscriber.inspect %>
-<ul>
-  <li>
-  <% if user.user_image.present? %>
-    <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
-  <% elsif user.image.present? %>
-    <%= image_tag user.image  %>
-  <% else %>
-    <%= image_tag 'DefaultUserPic.png' %>
-  <% end %>
+<ul class="accordion" data-accordion>
+  <% @group.subscribers.each_with_index do |subscriber, index| %>
+  <% user = User.find(subscriber.user_id) %>
+  <li class="accordion-navigation">
+  <a href="#panel<%= index %>a"><%= user.username %></a>
+    <div id="panel<%= index %>a" class="content">
+      <% if user.user_image.present? %>
+      <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
+      <% elsif user.image.present? %>
+      <%= image_tag user.image  %>
+      <% else %>
+      <%= image_tag 'DefaultUserPic.png' %>
+      <% end %>
+      <p><%= user.description %></p>
+    </div>
   </li>
-  <li><%= user.username %></li>
-  <li><%= user.description %></li>
-  <li>Admin: <%= subscriber.admin %></li>
+  <% end %>
+</ul>
+
+
+<% @group.games.each do |game| %>
+<ul>
+  <li><%= image_tag game.image %></li>
+  <li><%= game.name %></li>
+  <li><%= game.description %></li>
 </ul>
 <% end %>
