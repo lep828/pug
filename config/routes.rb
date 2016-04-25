@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :groups do
     resources :subscribers, only: [:create, :destroy]
-    member do 
-      get '/add', to: "games#add"
+  end
+  resources :games do
+    collection do 
+      post '/add', to: "games#add"
     end
   end
-  resources :games
   root 'statics#home'
 end

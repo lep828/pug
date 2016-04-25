@@ -4,7 +4,7 @@ class GamesController < ApplicationController
   def index
     @games = Game.all
     @groups = Group.all
-    @group = Group.new
+    @game = Game.new
   end
 
   def new
@@ -43,11 +43,13 @@ class GamesController < ApplicationController
   end
 
   def add
-    @game = Game.find(:id)
-    raise params.inspect
-    if @group.games.create!(game_params)
+    @group = Group.find(params[:group_id])
+    @game = Game.find(params[:game][:id])
+    # set_params
+
+    if @group.games << @game
       flash[:success] = "You have added #{@game.name} to #{@group.name}"
-      redirect_to group_path
+      redirect_to groups_path
     else
       flash[:info] = "Something went wrong try again."
       redirect_to games_path
@@ -59,7 +61,15 @@ class GamesController < ApplicationController
       @game = Game.find(params[:id])
     end
 
+    # def set_params
+    #   @game = Game.find(params[:game][:id])
+    #   params[:game][:id] = @game.id
+    #   params[:game][:name] = @game.name
+    #   params[:game][:image] = @game.image
+    #   params[:game][:description] = @game.description
+    # end
+
     def game_params
-      params.require(:game).permit(:name, :description, :image)
+      params.require(:game).permit(:name, :description, :image, :id)
     end
 end

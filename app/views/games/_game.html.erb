@@ -8,9 +8,19 @@
     <li><%= link_to "Edit Game", edit_game_path(game) %></li>
     <li><%= link_to "Remove Game", game, method: :delete %></li>
     <li>
-      <% current_user.subscribers.where(admin: true).each do |group| %>
-        <%= Group.find(group.group_id).name %>
+
+      <%= form_for @game, url: { action: "add" } do |f| %>
+        <%= f.hidden_field :id, value: game.id %>
+
+        <%= f.label :name %>
+        <select name="group_id">
+          <% current_user.subscribers.where(admin: true).each do |group| %>
+            <option value="<%= group.group_id %>"><%= Group.find(group.group_id).name %></option>
+          <% end %>
+        </select>
+        <%= f.submit "Add game" %>
       <% end %>
+
     </li>
   </ul>
 </li>
