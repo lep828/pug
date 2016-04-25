@@ -45,13 +45,12 @@ class GamesController < ApplicationController
   def add
     @group = Group.find(params[:group_id])
     @game = Game.find(params[:game][:id])
-    # set_params
 
     if @group.games << @game
       flash[:success] = "You have added #{@game.name} to #{@group.name}"
       redirect_to groups_path
     else
-      flash[:info] = "Something went wrong try again."
+      flash[:info] = "#{@game.name} is already in #{@group.name}"
       redirect_to games_path
     end
   end
@@ -60,14 +59,6 @@ class GamesController < ApplicationController
     def set_game
       @game = Game.find(params[:id])
     end
-
-    # def set_params
-    #   @game = Game.find(params[:game][:id])
-    #   params[:game][:id] = @game.id
-    #   params[:game][:name] = @game.name
-    #   params[:game][:image] = @game.image
-    #   params[:game][:description] = @game.description
-    # end
 
     def game_params
       params.require(:game).permit(:name, :description, :image, :id)

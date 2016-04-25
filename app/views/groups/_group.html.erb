@@ -1,6 +1,14 @@
 <li>
   <ul>
-    <img src="<%= group.image %>">
+    <div class="group-image">
+    <% if group.group_image.present? %>
+      <%= link_to image_tag(group.group_image.detail.url), group.group_image.url %>
+    <% elsif group.image.present? %>
+      <%= image_tag group.image %>
+    <% else %>
+      <%= image_tag 'DefaultUserPic.png' %>
+    <% end %>
+    </div>
     <li>Group: <%= group.name %></li>
     <li>Owner: <%= User.find(group.creator_id).username %></li>
     <li><%= group.description %></li>
