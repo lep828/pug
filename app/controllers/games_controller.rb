@@ -3,6 +3,8 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    @groups = Group.all
+    @group = Group.new
   end
 
   def new
@@ -41,9 +43,8 @@ class GamesController < ApplicationController
   end
 
   def add
-    @group = Group.find(params[:id])
-    raise params.inspect
     @game = Game.find(:id)
+    raise params.inspect
     if @group.games.create!(game_params)
       flash[:success] = "You have added #{@game.name} to #{@group.name}"
       redirect_to group_path
