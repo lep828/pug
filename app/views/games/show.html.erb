@@ -1,3 +1,6 @@
 <h1><%= @game.name %></h1>
 <img src="<%= @game.image %>">
 <p><%= @game.description %></p>
+
+<%= render partial: 'comments/form', locals: { commentable: @game } %>
+<%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @game } %>

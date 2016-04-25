@@ -12,6 +12,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @comments = @game.comments
   end
 
   def create

@@ -27,3 +27,6 @@
   <li><%= game.description %></li>
 </ul>
 <% end %>
+
+<%= render partial: 'comments/form', locals: { commentable: @group } %>
+<%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group } %>

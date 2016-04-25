@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   has_and_belongs_to_many :games
 
   mount_uploader :group_image, GroupImageUploader
+  acts_as_commentable
 
   validates :name, uniqueness: true, presence: true
   validates :name, length: { in: 5..30 }
