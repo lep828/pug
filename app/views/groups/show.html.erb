@@ -1,32 +1,44 @@
 <h1><%= @group.name %></h1>
 
-<ul class="accordion" data-accordion>
-  <% @group.subscribers.each_with_index do |subscriber, index| %>
-  <% user = User.find(subscriber.user_id) %>
-  <li class="accordion-navigation">
-  <a href="#panel<%= index %>a"><%= user.username %></a>
-    <div id="panel<%= index %>a" class="content">
-      <div class="subscriber-image">
-      <% if user.user_image.present? %>
-      <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
-      <% else %>
-      <%= image_tag 'DefaultUserPic.png' %>
+<ul class="tabs" data-tab>
+  <li class="tab-title active"><a href="#panel1">Users</a></li>
+  <li class="tab-title"><a href="#panel2">Games</a></li>
+  <li class="tab-title"><a href="#panel3">Comments</a></li>
+</ul>
+<div class="tabs-content">
+  <div class="content active" id="panel1">
+    <ul class="accordion" data-accordion>
+      <% @group.subscribers.each_with_index do |subscriber, index| %>
+      <% user = User.find(subscriber.user_id) %>
+      <li class="accordion-navigation">
+      <a href="#panel<%= index %>a"><%= user.username %></a>
+        <div id="panel<%= index %>a" class="content">
+          <div class="subscriber-image">
+          <% if user.user_image.present? %>
+          <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
+          <% else %>
+          <%= image_tag 'DefaultUserPic.png' %>
+          <% end %>
+          </div>
+          <p>Description: <%= user.description %> | Admin: <%= subscriber.admin %></p>
+          <a href="/users/<%= user.id %>">Show</a>
+        </div>
+      </li>
       <% end %>
-      </div>
-      <p>Description: <%= user.description %> | Admin: <%= subscriber.admin %></p>
-      <a href="/users/<%= user.id %>">Show</a>
-    </div>
-  </li>
-  <% end %>
-</ul>
+    </ul>
+  </div>
+  <div class="content" id="panel2">
+    <% @group.games.each do |game| %>
+    <ul>
+      <li><%= image_tag game.image %></li>
+      <li><%= game.name %></li>
+      <li><%= game.description %></li>
+    </ul>
+    <% end %>
+  </div>
+  <div class="content" id="panel3">
+    <%= render partial: 'comments/form', locals: { commentable: @group } %>
+    <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group } %>
+  </div>
+</div>
 
-<% @group.games.each do |game| %>
-<ul>
-  <li><%= image_tag game.image %></li>
-  <li><%= game.name %></li>
-  <li><%= game.description %></li>
-</ul>
-<% end %>
-
-<%= render partial: 'comments/form', locals: { commentable: @group } %>
-<%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group } %>
