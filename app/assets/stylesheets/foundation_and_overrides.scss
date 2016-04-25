@@ -857,7 +857,7 @@ $tabbar-height: rem-calc(60);
 // $tabbar-header-margin: 0;
 
 // Off Canvas Menu Variables
-// $off-canvas-width: rem-calc(250);
+$off-canvas-width: rem-calc(300);//rem-calc(250);
 // $off-canvas-bg: $oil;
 // $off-canvas-bg-hover: scale-color($tabbar-bg, $lightness: -30%);
 // $off-canvas-bg-active: scale-color($tabbar-bg, $lightness: -30%);
@@ -913,7 +913,7 @@ $off-canvas-overlay-background: rgba(black, .2) ;// rgba($white, .2);
 // $include-html-orbit-classes: $include-html-classes;
 
 // We use these to control the caption styles
-// $orbit-container-bg: none;
+$orbit-container-bg: rgba(black, .1);//none;
 // $orbit-caption-bg: rgba(51,51,51, .8);
 // $orbit-caption-font-color: $white;
 // $orbit-caption-font-size: rem-calc(14);
@@ -923,12 +923,12 @@ $off-canvas-overlay-background: rgba(black, .2) ;// rgba($white, .2);
 
 // We use these to control the left/right nav styles
 // $orbit-nav-bg: transparent;
-// $orbit-nav-bg-hover: rgba(0,0,0,0.3);
+$orbit-nav-bg-hover: rgba(0,0,0, 0.5);
 // $orbit-nav-arrow-color: $white;
 // $orbit-nav-arrow-color-hover: $white;
 
 // We use these to control the timer styles
-// $orbit-timer-bg: rgba(255,255,255,0.3);
+$orbit-timer-bg: rgba(white, .8);
 // $orbit-timer-show-progress-bar: true;
 
 // We use these to control the bullet nav styles

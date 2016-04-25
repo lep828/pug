@@ -3,6 +3,9 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+
+    @q = Group.search(params[:q])
+    @groups = @q.result(distinct: true)
   end
 
   def show
