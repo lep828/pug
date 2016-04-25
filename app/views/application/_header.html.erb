@@ -10,9 +10,9 @@
           <h1 class="title">P.U.G</h1>
         </section>
 
-        <section class="right tab-bar-section">
+        <section class="right-small">
           <%= link_to root_path do %>
-            <%= image_tag 'pug.gif' %>
+          <%= image_tag 'pug.gif', id: "pug" %>
           <% end %>
         </section>
       </nav>
@@ -20,13 +20,29 @@
       <aside class="left-off-canvas-menu">
         <ul class="off-canvas-list">
           <% if user_signed_in? %>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to "Users", users_path %></li>
-            <li><%= link_to "Groups", groups_path %></li>
-            <li><%= link_to "Games", games_path %></li>
+          <li>
+            <label>Navigation</label>
+          </li>
+          <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Groups", groups_path %></li>
+          <li><%= link_to "Games", games_path %></li>
+          <li>
+            <%= search_form_for @q do |f| %>
+            <div>
+              <%= f.label "Search for a game." %>
+              <%= f.text_field :name_cont %>
+            </div>
+            <%= f.submit class: "button secondary" %>
+            <% end %>
+          </li>
+          <li>
+            <label>Account</label>
+          </li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to "Edit Account", edit_user_registration_path(current_user) %></li>
           <% else %>
-            <li><%= link_to "Register", new_user_registration_path %></li>
-            <li><%= link_to "Login", new_user_session_path %></li>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+          <li><%= link_to "Login", new_user_session_path %></li>
           <% end %>
         </ul>
       </aside>
@@ -37,4 +53,5 @@
 
     </div>
   </div>
+
 </header>

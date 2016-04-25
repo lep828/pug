@@ -7,18 +7,19 @@
 </ul>
 <div class="tabs-content">
   <div class="content active" id="panel1">
+
     <ul class="accordion" data-accordion>
       <% @group.subscribers.each_with_index do |subscriber, index| %>
       <% user = User.find(subscriber.user_id) %>
       <li class="accordion-navigation">
-      <a href="#panel<%= index %>a"><%= user.username %></a>
+        <a href="#panel<%= index %>a"><%= user.username %></a>
         <div id="panel<%= index %>a" class="content">
           <div class="subscriber-image">
-          <% if user.user_image.present? %>
-          <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
-          <% else %>
-          <%= image_tag 'DefaultUserPic.png' %>
-          <% end %>
+            <% if user.user_image.present? %>
+            <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
+            <% else %>
+            <%= image_tag 'DefaultUserPic.png' %>
+            <% end %>
           </div>
           <p>Description: <%= user.description %> | Admin: <%= subscriber.admin %></p>
           <a href="/users/<%= user.id %>">Show</a>
@@ -26,19 +27,21 @@
       </li>
       <% end %>
     </ul>
+
+    </div>
+
+    <div class="content" id="panel2">
+      <% @group.games.each do |game| %>
+      <ul>
+        <li><%= image_tag game.image %></li>
+        <li><%= game.name %></li>
+        <li><%= game.description %></li>
+      </ul>
+      <% end %>
+    </div>
+    <div class="content" id="panel3">
+      <%= render partial: 'comments/form', locals: { commentable: @group } %>
+      <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group } %>
+    </div>
   </div>
-  <div class="content" id="panel2">
-    <% @group.games.each do |game| %>
-    <ul>
-      <li><%= image_tag game.image %></li>
-      <li><%= game.name %></li>
-      <li><%= game.description %></li>
-    </ul>
-    <% end %>
-  </div>
-  <div class="content" id="panel3">
-    <%= render partial: 'comments/form', locals: { commentable: @group } %>
-    <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group } %>
-  </div>
-</div>
 
