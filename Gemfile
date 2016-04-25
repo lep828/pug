@@ -47,4 +47,5 @@ end
 gem 'foundation-rails', '~> 5.5.3'
 gem 'carrierwave', '0.10.0'
 gem 'rmagick'
+gem 'acts_as_commentable', '4.0.2'
 gem 'rails_12factor', group: :production
