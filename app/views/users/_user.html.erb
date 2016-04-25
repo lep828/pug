@@ -1,12 +1,12 @@
 <div class="medium-4 columns panel" data-equalizer-watch>
   <div class="user-image">
-  <% if user.user_image.present? %>
+    <% if user.user_image.present? %>
     <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
-  <% else %>
+    <% else %>
     <%= image_tag 'DefaultUserPic.png' %>
-  <% end %>
+    <% end %>
   </div>
-  <li><%= user.username %></li>
-  <li><%= user.description %></li>
-  <li><%= link_to "Show", user %></li>
+  <p><%= user.username %></p>
+  <p><%= user.description %></p>
+  <p><%= link_to "Show", user %></p>
 </div>
