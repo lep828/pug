@@ -5,6 +5,9 @@ class GamesController < ApplicationController
     @games = Game.all
     @groups = Group.all
     @game = Game.new
+
+    @q = Game.search(params[:q])
+    @games = @q.result(distinct: true)
   end
 
   def new
