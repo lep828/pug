@@ -1,27 +1,30 @@
-<li>
-  <ul>
+<div class="medium-6 columns panel end" data-equalizer-watch>
+  <div class="game-image">
     <img src="<%= game.image %>">
-    <li>Title: <%= game.name %></li>
-    <li><%= game.description %></li>
-    <li>Added: <%= distance_of_time_in_words(Time.now, game.created_at) %> ago</li>
-    <li><%= link_to "Info", game %></li>
-    <li><%= link_to "Edit Game", edit_game_path(game) %></li>
-    <li><%= link_to "Remove Game", game, method: :delete %></li>
-    <% current_user.subscribers.each do |sub| %>
+  </div>
+  <p>Title: <%= game.name %></p>
+  <p><%= game.description %></p>
+  <p>Added: <%= distance_of_time_in_words(Time.now, game.created_at) %> ago</p>
+  <p><%= link_to "Info", game %></p>
+  <p><%= link_to "Edit Game", edit_game_path(game) %></p>
+  <p><%= link_to "Remove Game", game, method: :delete %></p>
+
+  <div class="row">
+  <% current_user.subscribers.each do |sub| %>
     <% if sub.admin == true %>
-      <li>
-        <%= form_for @game, url: { action: "add" } do |f| %>
+      <%= form_for @game, url: { action: "add" } do |f| %>
         <%= f.hidden_field :id, value: game.id %>
+        <div class="medium-8 columns">
         <%= f.label "Select a group to add #{game.name}" %>
         <select name="group_id">
           <% current_user.subscribers.where(admin: true).each do |group| %>
             <option value="<%= group.group_id %>"><%= Group.find(group.group_id).name %></option>
           <% end %>
         </select>
-        <%= f.submit "Add game", class: "button small" %>
-        <% end %>
-      </li>
+        </div>
+        <%= f.submit "Add game", class: "button small right radius search" %>
       <% end %>
     <% end %>
-  </ul>
-</li>
+  <% end %>
+  </div>
+</div>

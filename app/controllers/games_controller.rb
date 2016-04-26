@@ -20,7 +20,6 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-    raise @game.inspect
     if @game.save
       flash[:success] = "You have added #{@game.name}."
       redirect_to games_path

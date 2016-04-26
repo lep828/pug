@@ -3,16 +3,24 @@ Group.destroy_all
 Game.destroy_all
 Subscriber.destroy_all
 
-u1 = User.create!(username: "peter", email: "peter@peter.com", user_image: "https://www.fillmurray.com/500/500", description: "le epic gamer", password: "password")
+u1 = User.create!(username: "peter", email: "peter@peter.com", description: "le epic gamer", password: "password")
+u1.user_image = Rails.root.join("app/assets/images/lolcats.jpg").open
+u1.save
 
-u2 = User.create!(username: "peter2", email: "peter@peter2.com", user_image: "https://www.fillmurray.com/450/450", description: "goat", password: "password")
+u2 = User.create!(username: "peter2", email: "peter@peter2.com", description: "goat", password: "password")
+u2.user_image = Rails.root.join("app/assets/images/pug.gif").open
+u2.save
 
-u3 = User.create!(username: "peter3", email: "peter@peter3.com", user_image: "https://www.fillmurray.com/350/350", description: "goat3", password: "password")
+u3 = User.create!(username: "peter3", email: "peter@peter3.com", description: "goat3", password: "password")
+u3.user_image = Rails.root.join("app/assets/images/pug-left.jpg").open
+u3.save
 
-g1 = Group.create!(name: "heythere", description: "we the greatest.", image: "https://www.fillmurray.com/300/300", creator_id: u1.id)
+g1 = Group.create!(name: "heythere", description: "we the greatest.", creator_id: u1.id)
+g1.group_image = Rails.root.join("app/assets/images/fillmurray.jpg").open
+g1.save
+
+g1.games.create!(name: "Fifa 16", description: "A game about football.", image:"https://lh3.googleusercontent.com/Z6dvPMYXA-kPrzuWh1K3NMKCg6TXo7-d11XipaVg_RoUI4wquZje8QnLI589S5Eulg=w300")
 
 Subscriber.create!(group_id: g1.id, user_id: u1.id, admin: true)
 Subscriber.create!(group_id: g1.id, user_id: u2.id, admin: false)
 Subscriber.create!(group_id: g1.id, user_id: u3.id, admin: false)
-
-g1.games.create!(name: "game1", description: "askdflasmdfk", image:"https://www.fillmurray.com/200/200")

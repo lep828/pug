@@ -1,24 +1,21 @@
 <div class="medium-12 columns panel" data-equalizer-watch>
   <div class="group-image">
     <% if group.group_image.present? %>
-      <%= link_to image_tag(group.group_image.detail.url), group.group_image.url %>
+    <%= link_to image_tag(group.group_image.detail.url), group.group_image.url %>
     <% elsif group.image.present? %>
-      <%= image_tag group.image %>
+    <%= image_tag group.image %>
     <% else %>
     <%= image_tag 'default-group.png' %>
     <% end %>
   </div>
-  <p>Group: <%= group.name %></p>
-  <p>Founder: <%= User.find(group.creator_id).username %></p>
+  <h2>Group: <%= group.name %></h2>
+  <h5>Founder: <%= User.find(group.creator_id).username %></h5>
   <p><%= group.description %></p>
-  <p>Created: <%= distance_of_time_in_words(Time.now, group.created_at) %> ago</p>
-  <ul>
-    <li><%= link_to "Show", group %></li>
-    <% if current_user.subscribers.where(group_id: group.id).present? == false %>
-      <li><%= link_to "Join!", group_subscribers_path(group), method: :post %></li>
-    <% elsif current_user.subscribers.where(admin: true).where(group_id: group.id).present? %>
-      <li><%= link_to "Edit", edit_group_path(group) %></li>
-      <li><%= link_to "Disband", group, method: :delete %></li>
-    <% end %>
-  </ul>
+  <%= link_to "Show", group, class: "button small radius" %>
+  <% if current_user.subscribers.where(group_id: group.id).present? == false %>
+    <%= link_to "Join!", group_subscribers_path(group), method: :post, class: "button small radius" %>
+  <% elsif current_user.subscribers.where(admin: true).where(group_id: group.id).present? %>
+    <%= link_to "Edit", edit_group_path(group), class: "button small radius" %>
+    <%= link_to "Disband", group, method: :delete, class: "button small radius" %>
+  <% end %>
 </div>

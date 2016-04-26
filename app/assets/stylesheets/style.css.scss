@@ -16,10 +16,18 @@
 
 .group-image {
   img {
-    height: 300px;
-    width:  300px;
     float: left;
     margin-right: 25px;
+  }
+}
+
+.game-image {
+  img {
+    height: 300px;
+    width: 300px;
+    float: left;
+    margin-right: 25px;
+    margin-bottom: 25px;
   }
 }
 
@@ -51,11 +59,32 @@ body,html{
 }
 
 .landing-page {
-  background: url('pug-left.jpg');
+  background: url('pug-left');
   background-size: cover;
   height: 95vh;
 }
 
 .right-small {
   border-left: none;
+}
+
+.tab-title {
+  width: 33%;
+  text-align: center;
+}
+
+.search {
+  margin-top: 1em;
+}
+
+.users-heading {
+  margin-bottom: 40px;
+}
+
+#home-heading {
+  margin: 30px 0;
+}
+
+#or {
+  margin: 0 20px;
 }

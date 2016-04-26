@@ -32,6 +32,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.creator_id = current_user.id
+
     if @group.save
       @group.subscribers.create!(user_id: current_user.id, admin: true)
       flash[:success] = "Your group has now been listed!"
