@@ -19,7 +19,8 @@ $(document).ready(function() {
   $(document).foundation({
     orbit: {
       animation: 'slide',
-      timer_speed: 5000,
+      timer_speed: 3000,
+      next_on_click: false,
       pause_on_hover: true,
       resume_on_mouseout: true,
       animation_speed: 500,

@@ -1,4 +1,4 @@
-<div class="medium-6 columns panel end" data-equalizer-watch>
+<div class="medium-12 columns panel" data-equalizer-watch>
   <div class="game-image">
     <img src="<%= game.image %>">
   </div>
@@ -22,7 +22,9 @@
           <% end %>
         </select>
         </div>
-        <%= f.submit "Add game", class: "button small right radius search" %>
+        <div class="medium-4 columns">
+        <%= f.submit "Add game", class: "button small radius search" %>
+        </div>
       <% end %>
     <% end %>
   <% end %>

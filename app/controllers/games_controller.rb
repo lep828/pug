@@ -50,12 +50,14 @@ class GamesController < ApplicationController
     @group = Group.find(params[:group_id])
     @game = Game.find(params[:game][:id])
 
-    if @group.games << @game
-      flash[:success] = "You have added #{@game.name} to #{@group.name}"
-      redirect_to groups_path
-    else
+    
+    if check_if_game_in_group?(@group, @game) == true
       flash[:info] = "#{@game.name} is already in #{@group.name}"
       redirect_to games_path
+    elsif check_if_game_in_group?(@group, @game) == false
+      @group.games << @game
+      flash[:success] = "You have added #{@game.name} to #{@group.name}"
+      redirect_to group_path(@group)
     end
   end
 
@@ -63,8 +65,19 @@ class GamesController < ApplicationController
     def set_game
       @game = Game.find(params[:id])
     end
-
+    
     def game_params
       params.require(:game).permit(:name, :description, :image)
+    end
+  
+    def check_if_game_in_group?(group, game_to_add)
+      game_in_group = false
+  
+      group.games.each do |game|
+        if game.id == game_to_add.id
+          game_in_group = true
+        end
+      end
+      game_in_group
     end
 end
