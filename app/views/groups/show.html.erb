@@ -48,8 +48,12 @@
     </div>
     
     <div class="content" id="panel3">
-      <%= render partial: 'comments/form', locals: { commentable: @group } %>
       <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group }%>
+      <a href="#" data-reveal-id="myModal", class="button small radius">Comment</a>
+
+      <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+        <%= render partial: 'comments/form', locals: { commentable: @group } %>
+      </div>
     </div>
   </div>
 </div>
