@@ -19,7 +19,7 @@ g1 = Group.create!(name: "heythere", description: "we the greatest.", creator_id
 g1.group_image = Rails.root.join("app/assets/images/fillmurray.jpg").open
 g1.save
 
-g1.games.create!(name: "Fifa 16", description: "A game about football.", image:"https://lh3.googleusercontent.com/Z6dvPMYXA-kPrzuWh1K3NMKCg6TXo7-d11XipaVg_RoUI4wquZje8QnLI589S5Eulg=w300")
+g1.games.create!(name: "Fifa 16", description: "You’ll have Confidence in Defending, take Control in Midfield, and you’ll produce more Moments of Magic than ever before. FIFA 16 – Play Beautiful.", image:"https://lh3.googleusercontent.com/Z6dvPMYXA-kPrzuWh1K3NMKCg6TXo7-d11XipaVg_RoUI4wquZje8QnLI589S5Eulg=w300")
 
 Game.create!(name: "Destiny", description: "Destiny the Game is a next generation first person shooter set in our future developed by Bungie, the creators of Halo.
 ", image:"https://www.destinythegame.com/content/dam/atvi/bungie/dtg-comet/wtb/destiny.jpg")

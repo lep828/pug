@@ -1,4 +1,5 @@
 class SubscribersController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @group = Group.find(params[:group_id])
@@ -14,11 +15,6 @@ class SubscribersController < ApplicationController
   end
 
   def destroy
-  end
-
-  def admin
-    raise params.inspect
-    Subscriber.where(group_id: group_id).where(user_id: :id)
   end
   
 end

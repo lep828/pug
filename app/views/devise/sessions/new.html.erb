@@ -2,19 +2,23 @@
 
 <div class="row">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
+  <div class="medium-2 columns">
+    <%= f.label :email %>
+  </div>
+  <div class="medium-10 columns">
     <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
+  <div class="medium-2 columns">
+    <%= f.label :password %>
+  </div>
+  <div class="medium-10 columns">
     <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Log in", class: "button small radius right" %>
+    <%= f.submit "Log in", class: "button small radius right devise-links" %>
   </div>
   <% end %>
-  <div class="text-left"><%= render "devise/shared/links" %></div>
+  <div class="text-left devise-links"><%= render "devise/shared/links" %></div>
 </div>

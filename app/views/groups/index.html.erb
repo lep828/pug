@@ -7,6 +7,8 @@
 </div>
 <% end %>
 
+<div class="top-line"></div>
+
 <div class="row">
   <h2 class="text-center">Search for a Group.</h2>
   <%= search_form_for @q do |f| %>
@@ -21,9 +23,14 @@
 </div>
 
 <% if @other_groups.present? %>
+<div class="top-line"></div>
+
 <div class="row" data-equalizer>
   <h2 class="text-center">Other Groups You Can Join...</h2>
   <%= render @other_groups %>
 </div>
 <% end %>
-<%= link_to "Create a Group", new_group_path %>
+
+<div class="row">
+<%= link_to "Create your own Group", new_group_path, class: "button expand radius" %>
+</div>

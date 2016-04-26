@@ -1,7 +1,7 @@
 <div class="medium-12 columns panel" data-equalizer-watch>
   <div class="group-image">
     <% if group.group_image.present? %>
-    <%= link_to image_tag(group.group_image.detail.url), group.group_image.url %>
+    <%= image_tag(group.group_image.detail.url) %>
     <% elsif group.image.present? %>
     <%= image_tag group.image %>
     <% else %>

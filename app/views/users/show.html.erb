@@ -2,7 +2,7 @@
 
   <div class="medium-5 medium-offset-2 columns">
     <% if @user.user_image.present? %>
-    <%= link_to image_tag(@user.user_image.detail.url), @user.user_detail.url %>
+    <%= image_tag(@user.user_image.detail.url) %>
     <% else %>
     <%= image_tag 'DefaultUserPic.png' %>
     <% end %>
@@ -15,14 +15,15 @@
   </div>
 </div>
 
-<h2>Groups this user is apart of...</h2>
+<div class="top-line"></div>
+<h3 class="text-center">Groups this user is apart of...</h3>
 
 <div class="row" data-equalizer>
   <% @user.groups.each do |group| %>
   <div class="medium-4 columns panel" data-equalizer-watch>
     <div class="group-image">
       <% if group.group_image.present? %>
-      <%= link_to image_tag(group.group_image.detail.url), group.group_image.url %>
+      <%= image_tag(group.group_image.detail.url) %>
       <% elsif group.image.present? %>
       <%= image_tag group.image %>
       <% else %>

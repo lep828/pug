@@ -1,32 +1,31 @@
 <div class="medium-12 columns panel" data-equalizer-watch>
   <div class="game-image">
-    <img src="<%= game.image %>">
+    <%= image_tag game.image %>
   </div>
-  <p>Title: <%= game.name %></p>
-  <p><%= game.description %></p>
-  <p>Added: <%= distance_of_time_in_words(Time.now, game.created_at) %> ago</p>
-  <p><%= link_to "Info", game %></p>
-  <p><%= link_to "Edit Game", edit_game_path(game) %></p>
-  <p><%= link_to "Remove Game", game, method: :delete %></p>
+  <div>
+    <%= link_to "View", game, class: "button small right radius" %>
+    <h1><%= game.name %></h1>
+    <p><%= game.description %></p>
+  </div>
 
   <div class="row">
-  <% current_user.subscribers.each do |sub| %>
+    <% current_user.subscribers.each do |sub| %>
     <% if sub.admin == true %>
-      <%= form_for @game, url: { action: "add" } do |f| %>
-        <%= f.hidden_field :id, value: game.id %>
-        <div class="medium-8 columns">
-        <%= f.label "Select a group to add #{game.name}" %>
-        <select name="group_id">
-          <% current_user.subscribers.where(admin: true).each do |group| %>
-            <option value="<%= group.group_id %>"><%= Group.find(group.group_id).name %></option>
-          <% end %>
-        </select>
-        </div>
-        <div class="medium-4 columns">
-        <%= f.submit "Add game", class: "button small radius search" %>
-        </div>
-      <% end %>
+    <%= form_for @game, url: { action: "add" } do |f| %>
+    <%= f.hidden_field :id, value: game.id %>
+    <div class="medium-8 columns">
+      <%= f.label "Select a group to add #{game.name}" %>
+      <select name="group_id">
+        <% current_user.subscribers.where(admin: true).each do |group| %>
+        <option value="<%= group.group_id %>"><%= Group.find(group.group_id).name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="medium-4 columns">
+      <%= f.submit "Add game", class: "button small radius search" %>
+    </div>
     <% end %>
-  <% end %>
+    <% end %>
+    <% end %>
   </div>
 </div>

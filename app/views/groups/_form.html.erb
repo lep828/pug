@@ -6,24 +6,20 @@
       </div>
     <% end %>
   <% end %>
-
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control", value: @group.name %>
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.label "Group Name" %>
+      <%= f.text_field :name, placeholder: "Name", value: @group.name %>
+    </div>
+    <div class="medium-12 columns">
+      <%= f.label :description %>
+      <%= f.text_area :description, placeholder: "Tell me something about your Group.", value: @group.  description %>
+    </div>
+    <div class="medium-12 columns">
+      <%= f.label :image %>
+      <%= f.file_field :group_image, value: @group.group_image %>
+    </div>
+    
+    <%= f.submit class: "button small radius" %>
   </div>
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control", value: @group.description %>
-  </div>
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.text_field :image, class: "form-control", value: @group.image %>
-  </div>
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :group_image, class: "form-control", value: @group.group_image %>
-  </div>
-  
-  <%= f.submit class: "button small" %>
-
 <% end %>
