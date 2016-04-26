@@ -1,15 +1,21 @@
 <section class="landing-page">
   <div class="row">
-    <h1 class="text-right">Pick Up Group</h1>
-
-    <div class="medium-3 medium-offset-9 columns ">
+  
+    <div class="medium-4 medium-offset-8 columns ">
+    <h1>Pick Up Group</h1>
     <p>Pick Up Group or P.U.G is a website where gamers can go to and find users who play the games and form groups.</p>
     </div>
 
-    <div class="medium-3 medium-offset-9 columns ">
+    <div class="medium-4 medium-offset-8 columns ">
+    <% if user_signed_in? %>
+      <%= link_to "Groups", groups_path, class: "button small radius" %> 
+      <%= link_to "Users", users_path, class: "button small radius" %> 
+      <%= link_to "Games", games_path, class: "button small radius" %> 
+    <% else %>
       <%= link_to "Login", new_user_session_path, class: "button small radius" %>
       <span>Or</span>
       <%= link_to "Register", new_user_registration_path, class: "button small radius" %>
     </div>
+    <% end %>
   </div>
 </section>

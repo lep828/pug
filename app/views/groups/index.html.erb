@@ -1,10 +1,11 @@
+<% if @my_groups.present? %>
 <div class="row" data-equalizer>
   <h2 class="text-center">Your Groups</h2>
   <% @my_groups.each do |group| %>
   <%= render group %>
   <% end %>
 </div>
-
+<% end %>
 
 <div class="row">
   <h2 class="text-center">Search for a Group.</h2>
@@ -19,9 +20,10 @@
   <% end %>
 </div>
 
+<% if @other_groups.present? %>
 <div class="row" data-equalizer>
-<h2 class="text-center">Other Groups You Can Join...</h2>
+  <h2 class="text-center">Other Groups You Can Join...</h2>
   <%= render @other_groups %>
 </div>
-
+<% end %>
 <%= link_to "Create a Group", new_group_path %>
