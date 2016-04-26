@@ -15,7 +15,7 @@
         <%= f.label "Select a group to add #{game.name}" %>
         <select name="group_id">
           <% current_user.subscribers.where(admin: true).each do |group| %>
-          <option value="<%= group.group_id %>"><%= Group.find(group.group_id).name %></option>
+            <option value="<%= group.group_id %>"><%= Group.find(group.group_id).name %></option>
           <% end %>
         </select>
         <%= f.submit "Add game", class: "button small" %>

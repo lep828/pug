@@ -16,16 +16,18 @@
 
 </head>
 <body>
+  <header>
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
-  <%= render 'header' %>
+        <%= render 'nav' %>
+        <%= render 'content' %>
 
-  <footer class="row">
-    <section class="medium-4 columns">
-      Copyright 2013
-    </section>
-    <section class="medium-8 columns">
-      All rights reserved.
-    </section>
-  </footer>
+        <a class="exit-off-canvas"></a>
+        <%#= render 'footer' %>
+
+      </div>
+    </div>
+  </header>
 </body>
 </html>

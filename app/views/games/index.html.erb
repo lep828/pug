@@ -1,10 +1,12 @@
-<h2>Featured Games</h2>
+
+<h2 class="text-center">Featured Games</h2>
+
 <ul class="example-orbit-content" data-orbit>
   <% @games.each_with_index do |game, index| %>
   <li data-orbit-slide="headline-<%= index %>">
     <div class="orbit-content">
       <div class="game-image">
-          <%= image_tag game.image %>
+        <%= image_tag game.image %>
       </div>
       <p><strong><%= game.name %></strong></p>
       <p><%= game.description %></p>
@@ -13,14 +15,20 @@
   <% end %>
 </ul>
 
-<h2>Search for a Game.</h2>
-<%= search_form_for @q do |f| %>
-<div>
-  <%= f.label "Search" %>
-  <%= f.text_field :name_cont %>
+<div class="row" data-equalizer>
+  <h2 class="text-center">Search for a Game.</h2>
+  <%= search_form_for @q do |f| %>
+  <div class="medium-10 columns" data-equalizer-watch>
+    <%= f.label "Search" %>
+    <%= f.text_field :name_cont %>
+  </div>
+  <div class="medium-2 columns" data-equalizer-watch>
+    <%= f.submit class: "button small" %>
+  </div>
+  <% end %>
 </div>
-<%= f.submit class: "button small" %>
-<% end %>
 
-<h2>All Games</h2>
-<%= render @games %>
+<div class="row">
+  <h2 class="text-center">All Games</h2>
+  <%= render @games %>
+</div>

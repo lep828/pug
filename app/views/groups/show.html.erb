@@ -1,46 +1,56 @@
-<h1><%= @group.name %></h1>
-
-<ul class="tabs" data-tab>
-  <li class="tab-title active"><a href="#panel1">Users</a></li>
-  <li class="tab-title"><a href="#panel2">Games</a></li>
-  <li class="tab-title"><a href="#panel3">Comments</a></li>
-</ul>
-<div class="tabs-content">
-  <div class="content active" id="panel1">
-    <ul class="accordion" data-accordion>
-      <% @group.subscribers.each_with_index do |subscriber, index| %>
-      <% user = User.find(subscriber.user_id) %>
-      <li class="accordion-navigation">
-        <a href="#panel<%= index %>a"><%= user.username %></a>
-        <div id="panel<%= index %>a" class="content">
-          <div class="subscriber-image">
-            <% if user.user_image.present? %>
-              <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
-            <% else %>
-              <%= image_tag 'DefaultUserPic.png' %>
-            <% end %>
+<div class="row">
+  <h1><%= @group.name %></h1>
+  <%= image_tag @group.image %>
+  <p><%= @group.description %></p>
+  <ul class="tabs" data-tab>
+    <li class="tab-title active"><a href="#panel1">Games</a></li>
+    <li class="tab-title"><a href="#panel2">Users</a></li>
+    <li class="tab-title"><a href="#panel3">Comments</a></li>
+  </ul>
+  <div class="tabs-content">
+    <div class="content active" id="panel1">
+      <ul class="example-orbit-content" data-orbit>
+        <% @group.games.each_with_index do |game, index| %>
+        <li data-orbit-slide="headline-<%= index %>">
+          <div class="orbit-content">
+            <div class="game-image">
+              <%= image_tag game.image %>
+            </div>
+            <p><strong><%= game.name %></strong></p>
+            <p><%= game.description %></p>
           </div>
-          <p>Description: <%= user.description %> | Admin: <%= subscriber.admin %></p>
-          <a href="/users/<%= user.id %>">Show</a>
-        </div>
-      </li>
-      <% end %>
-    </ul>
+        </li>
+        <% end %>
+      </ul>
     </div>
 
     <div class="content" id="panel2">
-      <% @group.games.each do |game| %>
-      <ul>
-        <li><%= image_tag game.image %></li>
-        <li><%= game.name %></li>
-        <li><%= game.description %></li>
+      <ul class="accordion" data-accordion>
+        <% @group.subscribers.each_with_index do |subscriber, index| %>
+        <% user = User.find(subscriber.user_id) %>
+        <li class="accordion-navigation">
+          <a href="#panel<%= index %>a"><%= user.username %></a>
+          <div id="panel<%= index %>a" class="content">
+            <div class="subscriber-image">
+              <% if user.user_image.present? %>
+              <%= link_to image_tag(user.user_image.thumb.url), user.user_image.url %>
+              <% else %>
+              <%= image_tag 'DefaultUserPic.png' %>
+              <% end %>
+            </div>
+            <p>Description: <%= user.description %> | Admin: <%= subscriber.admin %></p>
+            <%= link_to "Profile", user_path(user) %>
+          </div>
+        </li>
+        <% end %>
       </ul>
-      <% end %>
+
     </div>
     
     <div class="content" id="panel3">
       <%= render partial: 'comments/form', locals: { commentable: @group } %>
-      <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group } %>
+      <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group }%>
     </div>
   </div>
+</div>
 

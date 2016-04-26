@@ -16,4 +16,9 @@ class SubscribersController < ApplicationController
   def destroy
   end
 
+  def admin
+    raise params.inspect
+    Subscriber.where(group_id: group_id).where(user_id: :id)
+  end
+  
 end

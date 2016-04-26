@@ -6,10 +6,20 @@ class GroupsController < ApplicationController
 
     @q = Group.search(params[:q])
     @groups = @q.result(distinct: true)
+    @my_groups = current_user.groups
+    @other_groups = @groups.to_a
+
+    @my_groups.each do |group|
+      if @other_groups.include? group 
+        @other_groups.shift
+      end
+    end
+
   end
 
   def show
     @comments = @group.comments
+    @subscriber = Subscriber.new
   end
 
   def edit

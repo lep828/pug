@@ -7,4 +7,5 @@ class Game < ActiveRecord::Base
   validates :name, length: { in: 4..20 }
   validates :image, presence: true
   validates :description, presence: true
+  validates_uniqueness_of :game_id, scope: :group_id
 end

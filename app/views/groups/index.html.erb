@@ -1,15 +1,27 @@
-<h2>Search for a Game.</h2>
-<%= search_form_for @q do |f| %>
-<div>
-  <%= f.label "Search" %>
-  <%= f.text_field :name_cont %>
-</div>
-<%= f.submit class: "button small" %>
-<% end %>
-
-<h2>All Groups</h2>
 <div class="row" data-equalizer>
-  <%= render @groups %>
+  <h2 class="text-center">Your Groups</h2>
+  <% @my_groups.each do |group| %>
+  <%= render group %>
+  <% end %>
+</div>
+
+
+<div class="row">
+  <h2 class="text-center">Search for a Group.</h2>
+  <%= search_form_for @q do |f| %>
+  <div class="medium-10 columns">
+    <%= f.label "Search" %>
+    <%= f.text_field :name_cont %>
+  </div>
+  <div class="medium-2 columns">
+    <%= f.submit class: "button small" %>
+  </div>
+  <% end %>
+</div>
+
+<div class="row" data-equalizer>
+<h2 class="text-center">Other Groups You Can Join...</h2>
+  <%= render @other_groups %>
 </div>
 
 <%= link_to "Create a Group", new_group_path %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :subscribers, only: [:create, :destroy]
   end
   resources :games do
-    collection do 
+    collection do
       post '/add', to: "games#add"
     end
   end
