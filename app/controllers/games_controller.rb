@@ -50,7 +50,6 @@ class GamesController < ApplicationController
     @group = Group.find(params[:group_id])
     @game = Game.find(params[:game][:id])
 
-    
     if check_if_game_in_group?(@group, @game) == true
       flash[:info] = "#{@game.name} is already in #{@group.name}"
       redirect_to games_path
