@@ -29,8 +29,7 @@
     height: 300px;
     width: 300px;
     float: left;
-    margin-right: 1em;
-    margin-bottom: 1em;
+    margin: 1em;
   }
 }
 
@@ -73,6 +72,10 @@ body,html{
 
 .right-small {
   border-left: none;
+}
+
+.left-small {
+  border-color: #7788AA;
 }
 
 .tab-title {
