@@ -25,9 +25,10 @@ class SubscribersController < ApplicationController
   def admin
     @subscriber = @group.subscribers.find(params[:id])
     @subscriber[:admin] = true
-    @subscriber.save
-    flash[:success] = "You have made #{User.find(@subscriber.user_id).username} an admin."
-    redirect_to group_path(@group)
+    if @subscriber.save
+      flash[:success] = "You have made #{User.find(@subscriber.user_id).username} an admin."
+      redirect_to group_path(@group)
+    end
   end
 
   private

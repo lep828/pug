@@ -9,6 +9,7 @@
   </ul>
   <div class="tabs-content">
     <div class="content active" id="panel1">
+
       <ul class="example-orbit-content" data-orbit>
         <% @group.games.each_with_index do |game, index| %>
         <li data-orbit-slide="headline-<%= index %>">
@@ -23,6 +24,8 @@
         <% end %>
       </ul>
     </div>
+
+
 
     <div class="content" id="panel2">
       <ul class="accordion" data-accordion>
