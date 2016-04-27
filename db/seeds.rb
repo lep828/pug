@@ -21,8 +21,7 @@ g1.save
 
 g1.games.create!(name: "Fifa 16", description: "You’ll have Confidence in Defending, take Control in Midfield, and you’ll produce more Moments of Magic than ever before. FIFA 16 – Play Beautiful.", image:"https://lh3.googleusercontent.com/Z6dvPMYXA-kPrzuWh1K3NMKCg6TXo7-d11XipaVg_RoUI4wquZje8QnLI589S5Eulg=w300")
 
-Game.create!(name: "Destiny", description: "Destiny the Game is a next generation first person shooter set in our future developed by Bungie, the creators of Halo.
-", image:"https://www.destinythegame.com/content/dam/atvi/bungie/dtg-comet/wtb/destiny.jpg")
+Game.create!(name: "Destiny", description: "From the Creators of Halo and the company that brought you Call of Duty. In Destiny you are a Guardian of the last city on Earth, able to wield incredible power. Explore the ancient ruins of our solar system, from the red dunes of Mars to the lush jungles of Venus. Defeat Earth’s enemies. Reclaim all that we have lost. Become legend.", image:"https://www.destinythegame.com/content/dam/atvi/bungie/dtg-comet/wtb/destiny.jpg")
 
 Subscriber.create!(group_id: g1.id, user_id: u1.id, admin: true)
 Subscriber.create!(group_id: g1.id, user_id: u2.id, admin: false)

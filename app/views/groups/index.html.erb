@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <% if @my_groups.present? %>
 <div class="row" data-equalizer>
   <h2 class="text-center">Your Groups</h2>
@@ -6,8 +7,10 @@
   <% end %>
 </div>
 <% end %>
-
 <div class="top-line"></div>
+
+<% end %>
+
 
 <div class="row">
   <h2 class="text-center">Search for a Group.</h2>
@@ -23,14 +26,19 @@
 </div>
 
 <% if @other_groups.present? %>
-<div class="top-line"></div>
 
+
+<div class="top-line"></div>
 <div class="row" data-equalizer>
+  <% if user_signed_in? %>
   <h2 class="text-center">Other Groups You Can Join...</h2>
+  <% else %>
+  <h2 class="text-center">Groups You Can Join...</h2>
+  <% end %>
   <%= render @other_groups %>
 </div>
 <% end %>
 
 <div class="row">
-<%= link_to "Create your own Group", new_group_path, class: "button expand radius" %>
+  <%= link_to "Create your own Group", new_group_path, class: "button success expand radius" %>
 </div>

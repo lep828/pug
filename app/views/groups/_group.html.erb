@@ -12,10 +12,14 @@
   <h5>Founder: <%= User.find(group.creator_id).username %></h5>
   <p><%= group.description %></p>
   <%= link_to "Show", group, class: "button small radius" %>
-  <% if current_user.subscribers.where(group_id: group.id).present? == false %>
-    <%= link_to "Join!", group_subscribers_path(group), method: :post, class: "button small radius" %>
-  <% elsif current_user.subscribers.where(admin: true).where(group_id: group.id).present? %>
-    <%= link_to "Edit", edit_group_path(group), class: "button small radius" %>
-    <%= link_to "Disband", group, method: :delete, class: "button small radius" %>
+  <% if user_signed_in? %>
+    <% if current_user.subscribers.where(group_id: group.id).present? == false %>
+      <%= link_to "Join!", group_subscribers_path(group), method: :post, class: "button small radius" %>
+    <% elsif current_user.subscribers.where(admin: true).where(group_id: group.id).present? %>
+      <%= link_to "Edit", edit_group_path(group), class: "button small radius" %>
+      <%= link_to "Disband", group, method: :delete, class: "button small radius" %>
+    <% else %>
+      <%= link_to "Leave Group", group_subscriber_path(group, id: current_user.id), method: :delete, class: "button small radius" %>
+    <% end %>
   <% end %>
 </div>

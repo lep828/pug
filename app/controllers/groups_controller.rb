@@ -7,13 +7,17 @@ class GroupsController < ApplicationController
 
     @q = Group.search(params[:q])
     @groups = @q.result(distinct: true)
-    @my_groups = current_user.groups
-    @other_groups = @groups.to_a
 
-    @my_groups.each do |group|
-      if @other_groups.include? group 
-        @other_groups.shift
+    if user_signed_in?
+      @my_groups = current_user.groups
+      @other_groups = @groups.to_a
+      @my_groups.each do |group|
+        if @other_groups.include? group 
+          @other_groups.shift
+        end
       end
+    else
+      @other_groups = @groups
     end
 
   end
@@ -59,11 +63,11 @@ class GroupsController < ApplicationController
   end
 
   private
-  def set_group
-    @group = Group.find(params[:id])
-  end
+    def set_group
+      @group = Group.find(params[:id])
+    end
 
-  def group_params
-    params.require(:group).permit(:name, :description, :image, :creator_id, :group_image)
-  end
+    def group_params
+      params.require(:group).permit(:name, :description, :image, :creator_id, :group_image)
+    end
 end

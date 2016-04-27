@@ -2,7 +2,7 @@
   height: 75px;
   width: 75px;
   float: left;
-  margin-right: 25px;
+  margin-right: 1em;
 }
 
 .user-image {
@@ -10,14 +10,17 @@
     height: 150px;
     width: 150px;
     float: left;
-    margin-right: 25px;
+    margin-right: 1em;
   }
 }
 
 .group-image {
   img {
     float: left;
-    margin-right: 25px;
+    height: 300px;
+    width: 300px;
+    margin-right: 1em;
+    margin-bottom: 1em;
   }
 }
 
@@ -26,8 +29,8 @@
     height: 300px;
     width: 300px;
     float: left;
-    margin-right: 25px;
-    margin-bottom: 25px;
+    margin-right: 1em;
+    margin-bottom: 1em;
   }
 }
 
@@ -73,7 +76,7 @@ body,html{
 }
 
 .tab-title {
-  width: 33%;
+  width: 33.33%;
   text-align: center;
 }
 
@@ -104,4 +107,18 @@ body,html{
   margin-right: 1em;
 }
 
+.comments {
+  margin: 1em 0;
+  border: 1px solid #ccc;
 
+  &:hover {
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  }
+  p, a, h5 {
+    margin: 0 1em;
+  }
+}
+
+.top-margin {
+  margin-top: 1em;
+}

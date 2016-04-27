@@ -1,6 +1,17 @@
-<h1><%= @game.name %></h1>
-<img src="<%= @game.image %>">
-<p><%= @game.description %></p>
+<div class="row top-margin">
+  <div class="medium-4 columns">
+    <%= image_tag @game.image, class: "game-image" %>
+  </div>
+  <div class="medium-8 columns">
+    <h1><%= @game.name %></h1>
+    <p><%= @game.description %></p>
+  </div>
+</div>
+<div class="row">
+  <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @game } %>
+<a href="#" data-reveal-id="myModal", class="button right radius devise-links">Comment</a>
 
-<%= render partial: 'comments/form', locals: { commentable: @game } %>
-<%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @game } %>
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <%= render partial: 'comments/form', locals: { commentable: @game } %>
+</div>
+</div>
