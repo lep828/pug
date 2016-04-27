@@ -2,7 +2,7 @@ class SubscribersController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
-    @group = Group.find(params[:id])
+    @group = Group.find(params[:group_id])
     @subscriber = @group.subscribers.new(user_id: current_user.id, admin: false)
         
     if @subscriber.save

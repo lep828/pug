@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
       @other_groups = @groups.to_a
       @my_groups.each do |group|
         if @other_groups.include? group 
-          @other_groups.shift
+          @other_groups.delete(group)
         end
       end
     else
