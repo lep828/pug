@@ -1,6 +1,6 @@
 <div class="comments medium-12 columns">
   <p><%= comment.comment %></p>
-  <h5 class="text-right"><%= comment.user.try(:username) %></h5>
+  <h5 class="text-right"><%= link_to comment.user.try(:username), user_path(comment.user) %></h5>
   <% if user_signed_in? %>
     <% if current_user.id == comment.user.id %>
     <%= link_to 'Delete Comment', comment_path(comment, commentable_type: commentable.class.to_s.underscore, commentable_id: commentable.id), method: :delete, class: "button alert tiny radius" %>

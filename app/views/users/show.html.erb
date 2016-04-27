@@ -1,16 +1,18 @@
 <div class="row">
 
-  <div class="medium-5 medium-offset-2 columns">
-    <% if @user.user_image.present? %>
-    <%= image_tag(@user.user_image.detail.url) %>
-    <% else %>
-    <%= image_tag 'DefaultUserPic.png' %>
-    <% end %>
+  <div class="medium-4 columns">
+    <div class="user-show">
+      <% if @user.user_image.present? %>
+      <%= image_tag(@user.user_image.detail.url) %>
+      <% else %>
+      <%= image_tag 'DefaultUserPic.png' %>
+      <% end %>
+    </div>
   </div>
-  <div class="medium-5 columns">
+  <div class="medium-8 columns">
     <h1><%= @user.username %></h1>
   </div>
-  <div class="medium-5 columns">
+  <div class="medium-8 columns">
     <p><%= @user.description %></p>
   </div>
 </div>
@@ -30,21 +32,19 @@
       <%= image_tag 'DefaultUserPic.png' %>
       <% end %>
     </div>
-    <p>Group: <%= group.name %></p>
-    <p>Owner: <%= User.find(group.creator_id).username %></p>
+    <h3>Group: <%= group.name %></h3>
+    <h5>Founder: <%= User.find(group.creator_id).username %></h5>
     <p><%= group.description %></p>
     <p>Created: <%= distance_of_time_in_words(Time.now, group.created_at) %> ago</p>
-    <ul>
-      <li><%= link_to "Show", group %></li>
-      <% if user_signed_in? %>
-        <% if current_user.subscribers.where(group_id: group.id).present? == false %>
-          <li><%= link_to "Join!", group_subscribers_path(group), method: :post %></li>
-        <% elsif current_user.subscribers.where(admin: true).where(group_id: group.id).present? %>
-          <li><%= link_to "Edit", edit_group_path(group) %></li>
-          <li><%= link_to "Disband", group, method: :delete %></li>
-        <% end %>
+    <%= link_to "Show", group, class: "button tiny radius" %>
+    <% if user_signed_in? %>
+      <% if current_user.subscribers.where(group_id: group.id).present? == false %>
+        <%= link_to "Join!", group_subscribers_path(group), method: :post, class: "button tiny radius" %>
+      <% elsif current_user.subscribers.where(admin: true).where(group_id: group.id).present? %>
+        <%= link_to "Edit", edit_group_path(group), class: "button tiny radius" %>
+        <%= link_to "Disband", group, method: :delete, class: "button tiny radius" %>
       <% end %>
-    </ul>
+    <% end %>
   </div>
   <% end %>
 </div>
