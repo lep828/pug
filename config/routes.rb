@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   
   resources :groups do
-    resources :subscribers, only: [:create, :destroy]
+    resources :subscribers, only: [:create, :destroy] do
+      member do
+        get '/admin', to: "subscribers#admin"
+      end
+    end
   end
 
   resources :games do

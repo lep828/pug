@@ -40,6 +40,11 @@
             </div>
             <p>Description: <%= user.description %> | Admin: <%= subscriber.admin %></p>
             <%= link_to "Profile", user_path(user), class: "button small radius" %>
+            <% if subscriber.admin == false && user_signed_in? %>
+              <% if @group.subscribers.where(user_id: current_user.id).where(admin: true) %>
+                <%= link_to "Make Admin", admin_group_subscriber_path(group_id: @group.id, id: subscriber.id), class: "button small radius" %>
+              <% end %>
+            <% end %>
           </div>
         </li>
         <% end %>
