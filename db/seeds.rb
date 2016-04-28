@@ -32,11 +32,11 @@ g1 = Group.create!(name: "Memers not Dreamers", description: "We made it.", crea
 g1.group_image = Rails.root.join("app/assets/images/fillmurray.jpg").open
 g1.save
 
-g2 = Group.create!(name: "Disgusted Strategy", description: "RTS games are life, except Street Fighter thats good too.", creator_id: u3.id)
+g2 = Group.create!(name: "Disgusted Strategy", description: "RTS games are life, but Street Fighter is good too.", creator_id: u3.id)
 g2.group_image = Rails.root.join("app/assets/images/rts.png").open
 g2.save
 
-g3 = Group.create!(name: "Stock Corp", description: "We only accept stock people.", creator_id: u4.id)
+g3 = Group.create!(name: "Stock Group", description: "We only accept stock people.", creator_id: u4.id)
 g3.group_image = Rails.root.join("app/assets/images/stock-group.jpg").open
 g3.save
 
@@ -50,7 +50,6 @@ g3.games.create!(name: "Call of Duty: Black Ops 3", description: "Call of Duty: 
 g2.games.create!(name: "Street Fighter 5", description: "The legendary fighting franchise returns with STREET FIGHTER® V! Stunning visuals depict the next generation of World Warriors in unprecedented detail, while exciting and accessible battle mechanics deliver endless fighting fun that both beginners and veterans can enjoy.", image: "https://upload.wikimedia.org/wikipedia/en/8/80/Street_Fighter_V_box_artwork.png")
 
 g2.games.create!(name: "Starcraft 2", description: "In typical real-time strategy games, players build armies and vie for control of the battlefield. The armies in play can be as small as a single squad of Marines or as large as a full-blown planetary invasion force. As commander, you observe the battlefield from a top-down perspective and issue orders to your units in real time. Strategic thinking is key to success; you need to gather information about your opponents, anticipate their moves, outflank their attacks, and formulate a winning strategy.", image: "http://static.mnium.org/images/contenu/actus/sc2/mini_logo_starcraft2_sc2.png")
-
 
 Subscriber.create!(group_id: g1.id, user_id: u1.id, admin: true)
 Subscriber.create!(group_id: g1.id, user_id: u2.id, admin: false)

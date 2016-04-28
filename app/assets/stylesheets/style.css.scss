@@ -20,6 +20,12 @@
   }
 }
 
+.user-content {
+  a {
+    margin-top: 1em;
+  }
+}
+
 .group-image {
   img {
     float: left;
@@ -97,18 +103,14 @@ body,html{
   margin-bottom: 40px;
 }
 
-#home-heading {
-  margin: 30px 0;
-}
-
 #or {
   margin: 0 20px;
 }
 
 .top-line {
-  width: 80%;
-  border-top: 1px solid black;
   margin: 2em auto;
+  border-bottom: 1px solid black;
+  box-shadow: 2px 0 5px #F5F5F5;
 }
 
 .devise-links {
@@ -119,11 +121,15 @@ body,html{
 .comments {
   margin: 1em 0;
   border: 1px solid #ccc;
+  transition: all 0.5s;
+  padding: 1em 0;
 
   &:hover {
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    transform: translateY(-3px);
+    transform: translateX(-3px);
   }
-  p, a, h5 {
+  p, a {
     margin: 0 1em;
   }
 }
@@ -151,6 +157,25 @@ body,html{
   }
 }
 
+.landing-content {
+  a {
+    margin: 0 0.5em;
+  }
+}
+
+.example-orbit-content {
+  color: #152B55;
+}
+
+.button {
+  transition: all 0.5s;
+  &:hover {
+    transform: translateY(-3px);
+    transform: translateX(-3px);
+    box-shadow: 3px 3px 5px #2D4471;
+  }
+}
+
 // SMALL SCREENS
 @media only screen and (max-width: 40em) {
   .group-content {
@@ -170,11 +195,6 @@ body,html{
     .landing-content {
       text-align: center;
       margin-top: 20em;
-    }
-  }
-  footer {
-    .top-line {
-      margin-top: 15em;
     }
   }
 }

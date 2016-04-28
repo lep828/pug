@@ -56,7 +56,9 @@
       <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group }%>
 
       <% if user_signed_in? %>
-      <a href="#" data-reveal-id="myModal", class="button right radius devise-links">Comment</a>
+      <div class="text-center">
+        <a href="#" data-reveal-id="myModal", class="button tiny radius devise-links">Comment</a>
+      </div>
       <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
         <%= render partial: 'comments/form', locals: { commentable: @group } %>
       </div>

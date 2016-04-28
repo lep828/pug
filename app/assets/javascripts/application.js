@@ -24,5 +24,5 @@ $(document).ready(function() {
       bullets: false
     }
   });
-  $(".notice" ).fadeOut(3000);
+  $(".alert-box").fadeOut(2000);
 })

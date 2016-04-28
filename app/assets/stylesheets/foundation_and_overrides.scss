@@ -213,7 +213,7 @@ $body-font-family: "Glegoo", serif;//$font-family-sans-serif;
 $header-font-family: 'Glegoo', serif;//$body-font-family;
 // $header-font-weight: $font-weight-normal;
 // $header-font-style: normal;
-// $header-font-color: $jet;
+$header-font-color: #152B55;//$jet;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
@@ -336,13 +336,13 @@ $header-font-family: 'Glegoo', serif;//$body-font-family;
 $accordion-navigation-bg-color: #7788AA;//$silver;
 $accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%);
 $accordion-navigation-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -10%);
-$accordion-navigation-active-font-color: #DDDDDD;//$jet;
+$accordion-navigation-active-font-color: white;//$jet;
 $accordion-navigation-font-color: white;//$jet;
 // $accordion-navigation-font-size: rem-calc(16);
 // $accordion-navigation-font-family: $body-font-family;
 
 // $accordion-content-padding: ($column-gutter/2);
-$accordion-content-active-bg-color: #DDDDDD;//$white;
+$accordion-content-active-bg-color: #F5F5F5;//$white;
 
 // 02. Alert Boxes
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -461,7 +461,7 @@ $accordion-content-active-bg-color: #DDDDDD;//$white;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
-// $button-function-factor: -20%;
+$button-function-factor: 20%;
 
 // We use these to control button border styles.
 // $button-border-width: 0;
@@ -1340,7 +1340,7 @@ $panel-font-color: #061739;//$oil;
 
 // $include-html-tabs-classes: $include-html-classes;
 
-$tabs-navigation-padding: 0;//rem-calc(16);
+$tabs-navigation-padding: 0.5em;//rem-calc(16);
 $tabs-navigation-bg-color: #7788AA;//$silver;
 $tabs-navigation-active-bg-color: #4E648E;//$white;
 $tabs-navigation-hover-bg-color: scale-color(#7788AA, $lightness: -10%);//scale-color($tabs-navigation-bg-color, $lightness: -6%);

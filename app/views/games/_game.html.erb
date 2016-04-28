@@ -1,4 +1,4 @@
-<div class="medium-12 columns panel" data-equalizer-watch>
+<div class="medium-12 columns panel radius" data-equalizer-watch>
   <div class="game-image">
     <%= image_tag game.image %>
   </div>
@@ -10,8 +10,8 @@
 
   <div class="row">
     <% if user_signed_in? %>
-      <% current_user.subscribers.each do |sub| %>
-        <% if sub.admin == true %>
+      <% current_user.subscribers.each do |subscriber| %>
+        <% if subscriber.admin == true %>
           <%= form_for @game, url: { action: "add" } do |f| %>
             <%= f.hidden_field :id, value: game.id %>
             <div class="medium-5 columns">
