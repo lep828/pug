@@ -1,5 +1,5 @@
 <div class="row">
-  <h1 class="text-center"><%= @group.name %></h1>
+  <h1 class="text-center top-margin"><%= @group.name %></h1>
   <%= image_tag @group.image %>
   <p class="text-center"><%= @group.description %></p>
   <ul class="tabs" data-tab>
@@ -10,6 +10,7 @@
   <div class="tabs-content">
     <div class="content active" id="panel1">
 
+    <% if @group.games.present? %>
       <ul class="example-orbit-content" data-orbit>
         <% @group.games.each_with_index do |game, index| %>
         <li data-orbit-slide="headline-<%= index %>">
@@ -23,6 +24,12 @@
         </li>
         <% end %>
       </ul>
+    <% else %>
+      <div class="text-center">
+        <p>Looks like there are no games...</p>
+        <%= link_to "Add a Game", games_path, class: "button small radius" %>
+      </div>
+    <% end %>
     </div>
 
     <div class="content" id="panel2">

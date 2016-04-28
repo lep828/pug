@@ -9,4 +9,9 @@ class Group < ActiveRecord::Base
   validates :name, uniqueness: true, presence: true
   validates :name, length: { in: 5..30 }
   validates :description, presence: true
+
+  def has_game?(game)
+    games.include? game
+  end
+  
 end

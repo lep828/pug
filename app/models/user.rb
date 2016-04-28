@@ -12,5 +12,16 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true, presence: true
   validates :username, length: { in: 4..20 }
   validates :description, presence: true
+
+  def subscribers_without_game(game)
+    subscribers.where(admin: true).select do |subscriber|
+      subscriber if !subscriber.group.has_game?(game)
+    end
+  end
+
+  def subscribers_without_game?(game) 
+    subscribers_without_game(game).length > 0
+  end
+
 end
 

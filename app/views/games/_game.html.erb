@@ -11,14 +11,14 @@
   <div class="row">
     <% if user_signed_in? %>
       <% current_user.subscribers.each do |subscriber| %>
-        <% if subscriber.admin == true %>
+        <% if subscriber.admin == true && current_user.subscribers_without_game?(game) %>
           <%= form_for @game, url: { action: "add" } do |f| %>
             <%= f.hidden_field :id, value: game.id %>
             <div class="medium-5 columns">
               <%= f.label :group_id, "Select a group to add #{game.name} to"%>
             <select name="group_id">
-              <% current_user.subscribers.where(admin: true).each do |group| %>
-                <option value="<%= group.group_id %>"><%= Group.find(group.group_id).name %></option>
+              <% current_user.subscribers_without_game(game).each do |subscriber| %>
+                <option value="<%= subscriber.group_id %>"><%= subscriber.group.name %></option>
               <% end %>
             </select>
             </div>

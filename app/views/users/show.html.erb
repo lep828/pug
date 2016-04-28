@@ -1,5 +1,5 @@
-<div class="row top-margin">
-  <div class="medium-4 columns">
+<div class="row top-margin panel radius">
+  <div class="medium-6 columns">
     <div class="user-show">
       <% if @user.user_image.present? %>
       <%= image_tag(@user.user_image.detail.url) %>
@@ -8,11 +8,9 @@
       <% end %>
     </div>
   </div>
-  <div class="medium-8 columns">
-    <h1 class="text-center"><%= @user.username %></h1>
-  </div>
-  <div class="medium-8 columns">
-    <p class="text-center"><%= @user.description %></p>
+  <div class="medium-6 columns">
+    <h1 class="text-center top-margin"><%= @user.username %></h1>
+    <h4 class="text-center top-margin"><%= @user.description %></h4>
   </div>
 </div>
 
@@ -21,14 +19,12 @@
 
 <div class="row" data-equalizer>
   <% @user.groups.each do |group| %>
-  <div class="medium-4 columns panel group-buttons-container" data-equalizer-watch>
+  <div class="medium-5 medium-offset-1 columns panel radius group-buttons-container end" data-equalizer-watch>
     <div class="group-image">
       <% if group.group_image.present? %>
-      <%= image_tag(group.group_image.detail.url) %>
-      <% elsif group.image.present? %>
-      <%= image_tag group.image %>
+        <%= image_tag group.group_image.detail.url, class: "user" %>
       <% else %>
-      <%= image_tag 'DefaultUserPic.png' %>
+        <%= image_tag 'default-group.png', class: "user" %>
       <% end %>
     </div>
     <div class="group-content">

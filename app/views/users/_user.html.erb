@@ -1,4 +1,4 @@
-<div class="medium-4 columns panel radius end" data-equalizer-watch>
+<div class="medium-5 medium-offset-1 columns panel radius end" data-equalizer-watch>
   <div class="user-image">
     <% if user.user_image.present? %>
     <%= image_tag(user.user_image.thumb.url) %>
@@ -7,7 +7,7 @@
     <% end %>
   </div>
   <div class="text-center user-content">
-    <h4 class="users-heading"><%= user.username %></h4>
+    <h3 class="users-heading"><%= user.username %></h3>
     <%= link_to "Show", user, class: "button radius tiny" %>
   </div>
 </div>
