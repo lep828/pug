@@ -1,25 +1,26 @@
-<div class="medium-12 columns panel" data-equalizer-watch>
+<div class="medium-12 columns panel group-buttons-container" data-equalizer-watch>
   <div class="group-image">
     <% if group.group_image.present? %>
-    <%= image_tag(group.group_image.detail.url) %>
-    <% elsif group.image.present? %>
-    <%= image_tag group.image %>
+      <%= image_tag(group.group_image.detail.url) %>
     <% else %>
-    <%= image_tag 'default-group.png' %>
+      <%= image_tag 'default-group.png' %>
     <% end %>
   </div>
-  <h2>Group: <%= group.name %></h2>
-  <h4>Founder: <%= User.find(group.creator_id).username %></h4>
-  <p><%= group.description %></p>
-  <%= link_to "Show", group, class: "button small radius" %>
-  <% if user_signed_in? %>
-    <% if current_user.subscribers.where(group_id: group.id).present? == false %>
-      <%= link_to "Join!", group_subscribers_path(group), method: :post, class: "button small radius" %>
-    <% elsif current_user.subscribers.where(admin: true).where(group_id: group.id).present? %>
-      <%= link_to "Edit", edit_group_path(group), class: "button small radius" %>
-      <%= link_to "Disband", group, method: :delete, class: "button small radius" %>
-    <% else %>
-      <%= link_to "Leave Group", group_subscriber_path(group, id: current_user.id), method: :delete, class: "button small radius" %>
+  <div class="group-content">
+    <h2><%= group.name %></h2>
+    <h4 class="hidden-for-small">Founder: <%= User.find(group.creator_id).username %></h4>
+    <p><%= group.description %></p>
+    <%= link_to "Show", group, class: "button tiny radius" %>
+    <% if user_signed_in? %>
+      <% if current_user.subscribers.where(group_id: group.id).present? == false %>
+        <%= link_to "Join!", group_subscribers_path(group), method: :post, class: "button tiny radius"  %>
+      <% elsif current_user.subscribers.where(admin: true).where(group_id: group.id).present? %>
+        <%= link_to "Edit", edit_group_path(group), class: "button tiny radius" %>
+        <%= link_to "Disband", group, method: :delete, class: "button tiny radius" %>
+      <% else %>
+        <%= link_to "Leave Group", group_subscriber_path(group, id: current_user.id), method: :delete,  class: "button tiny radius" %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
 </div>

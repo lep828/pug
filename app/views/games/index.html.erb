@@ -1,22 +1,36 @@
 <div class="row">
   <h2 class="text-center">Featured Games</h2>
-  <ul class="example-orbit-content" data-orbit>
-    <% @games.each_with_index do |game, index| %>
-    <li data-orbit-slide="headline-<%= index %>">
-      <div class="orbit-content">
-        <div class="game-image">
-          <%= image_tag game.image %>
-        </div>
-        <p><h1><%= game.name %></h1></p>
-        <p><%= game.description %></p>
+  <ul class="example-orbit" data-orbit>
+    <li>
+      <%= image_tag "fifa-orbit", class: "game-orbit" %>
+      <div class="orbit-caption">
+        <% @games.where(name: "Fifa 16").each do |game| %>
+          <%= link_to "Fifa 16", game_path(game) %>
+        <% end %>
       </div>
     </li>
-    <% end %>
+    <li>
+      <%= image_tag "cod-orbit", class: "game-orbit" %>
+      <div class="orbit-caption">
+        <% @games.where(name: "Call of Duty: Black Ops 3").each do |game| %>
+          <%= link_to "Call of Duty: Black Ops 3", game_path(game) %>
+        <% end %>
+      </div>
+    </li>
+    <li>
+      <%= image_tag "destiny-orbit", class: "game-orbit" %>
+      <div class="orbit-caption">
+        <% @games.where(name: "Destiny").each do |game| %>
+          <%= link_to "Destiny", game_path(game) %> 
+        <% end %>
+      </div>
+    </li>
   </ul>
 </div>
 
 <div class="row" data-equalizer>
-  <h2 class="text-center">Search for a Game</h2>
+  <div class="top-line"></div>
+  <h2 class="text-center ">Search for a Game</h2>
   <%= search_form_for @q do |f| %>
   <div class="medium-10 columns" data-equalizer-watch>
     <%= f.label "Search" %>
@@ -29,6 +43,7 @@
 </div>
 
 <div class="row" data-equalizer>
-  <h2 class="text-center">All Games</h2>
+  <div class="top-line"></div>
+  <h2 class="text-center index-header">All Games</h2>
   <%= render @games %>
 </div>

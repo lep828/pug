@@ -8,9 +8,9 @@
 
     <div class="medium-5 medium-offset-7 columns landing-content">
     <% if user_signed_in? %>
-      <%= link_to "Groups", groups_path, class: "button small radius" %> 
-      <%= link_to "Users", users_path, class: "button small radius" %> 
-      <%= link_to "Games", games_path, class: "button small radius" %> 
+      <%= link_to "Groups", groups_path, class: "button tiny radius" %> 
+      <%= link_to "Users", users_path, class: "button tiny radius" %> 
+      <%= link_to "Games", games_path, class: "button tiny radius" %> 
     <% else %>
       <%= link_to "Login", new_user_session_path, class: "button small radius" %>
       <span id="or">Or</span>

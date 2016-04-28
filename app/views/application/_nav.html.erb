@@ -24,17 +24,18 @@
     <li><%= link_to "Groups", groups_path %></li>
     <li><%= link_to "Games", games_path %></li>
     <% if user_signed_in? %>
-    <li>
-      <label>Account</label>
-    </li>
-    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-    <li><%= link_to "Edit Account", edit_user_registration_path(current_user) %></li>
+      <li>
+        <label>Account</label>
+      </li>
+      <li><%= link_to "Profile", user_path(current_user) %></li>
+      <li><%= link_to "Edit Account", edit_user_registration_path(current_user) %></li>
+      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
     <% else %>
-    <li>
-      <label>Account</label>
-    </li>
-    <li><%= link_to "Register", new_user_registration_path %></li>
-    <li><%= link_to "Login", new_user_session_path %></li>
+      <li>
+        <label>Account</label>
+      </li>
+      <li><%= link_to "Register", new_user_registration_path %></li>
+      <li><%= link_to "Login", new_user_session_path %></li>
     <% end %>
   </ul>
 </aside>

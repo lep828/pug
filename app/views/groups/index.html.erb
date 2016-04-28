@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
 <% if @my_groups.present? %>
 <div class="row" data-equalizer>
-  <h2 class="text-center">Your Groups</h2>
+  <h2 class="text-center index-header">Your Groups</h2>
   <% @my_groups.each do |group| %>
   <%= render group %>
   <% end %>
@@ -13,7 +13,7 @@
 
 
 <div class="row">
-  <h2 class="text-center">Search for a Group.</h2>
+  <h2 class="text-center index-header">Search for a Group.</h2>
   <%= search_form_for @q do |f| %>
   <div class="medium-10 columns">
     <%= f.label "Search" %>
@@ -27,13 +27,12 @@
 
 <% if @other_groups.present? %>
 
-
 <div class="top-line"></div>
 <div class="row" data-equalizer>
   <% if user_signed_in? %>
-  <h2 class="text-center">Other Groups You Can Join...</h2>
+  <h2 class="text-center index-header">Other Groups You Can Join...</h2>
   <% else %>
-  <h2 class="text-center">Groups You Can Join...</h2>
+  <h2 class="text-center index-header">Groups You Can Join...</h2>
   <% end %>
   <%= render @other_groups %>
 </div>

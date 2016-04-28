@@ -25,43 +25,48 @@
       </ul>
     </div>
 
-
-
     <div class="content" id="panel2">
       <ul class="accordion" data-accordion>
         <% @group.subscribers.each_with_index do |subscriber, index| %>
         <% user = User.find(subscriber.user_id) %>
         <li class="accordion-navigation">
-          <a href="#panel<%= index %>a"><%= user.username %></a>
+          <a href="#panel<%= index %>a"><%= user.username %><%= " - Admin" if subscriber.admin == true %></a>
           <div id="panel<%= index %>a" class="content">
             <div class="subscriber-image">
               <% if user.user_image.present? %>
-              <%= image_tag(user.user_image.thumb.url) %>
+                <%= image_tag(user.user_image.thumb.url) %>
               <% else %>
-              <%= image_tag 'DefaultUserPic.png' %>
+                <%= image_tag 'DefaultUserPic.png' %>
               <% end %>
             </div>
-            <p>Description: <%= user.description %> | Admin: <%= subscriber.admin %></p>
-            <%= link_to "Profile", user_path(user), class: "button small radius" %>
+            <p><%= user.description %></p>
+            <%= link_to "Profile", user_path(user), class: "button tiny radius" %>
             <% if subscriber.admin == false && user_signed_in? %>
               <% if @group.subscribers.where(user_id: current_user.id).where(admin: true) %>
-                <%= link_to "Make Admin", admin_group_subscriber_path(group_id: @group.id, id: subscriber.id), class: "button small radius" %>
+                <%= link_to "Make Admin", admin_group_subscriber_path(group_id: @group.id, id: subscriber.id), class: "button tiny radius" %>
               <% end %>
             <% end %>
           </div>
         </li>
         <% end %>
       </ul>
-
     </div>
     
     <div class="content" id="panel3">
       <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group }%>
-      <a href="#" data-reveal-id="myModal", class="button right radius devise-links">Comment</a>
 
+      <% if user_signed_in? %>
+      <a href="#" data-reveal-id="myModal", class="button right radius devise-links">Comment</a>
       <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
         <%= render partial: 'comments/form', locals: { commentable: @group } %>
       </div>
+      <% else %>
+        <p class="text-center">You must be logged in to Comment...</p>
+        <div class="medium- medium-offset-4 columns">
+        <%= link_to "Sign In", new_user_session_path, class: "button tiny radius devise-links" %>
+        <%= link_to "Register", new_user_registration_path, class: "button tiny radius devise-links" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

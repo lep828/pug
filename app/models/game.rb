@@ -4,7 +4,7 @@ class Game < ActiveRecord::Base
   acts_as_commentable
 
   validates :name, presence: true, uniqueness: true
-  validates :name, length: { in: 4..20 }
+  validates :name, length: { in: 4..40 }
   validates :image, presence: true
   validates :description, presence: true
 end
