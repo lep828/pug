@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   def subscribers_without_game(game)
     subscribers.where(admin: true).select do |subscriber|
-      subscriber if !subscriber.group.has_game?(game)
+      subscriber if subscriber.group && !subscriber.group.has_game?(game)
     end
   end
 

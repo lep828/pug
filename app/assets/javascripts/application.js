@@ -25,5 +25,4 @@ $(document).ready(function() {
     }
   });
   $(".alert-box").fadeOut(2000);
-  $('.parallax-window').parallax({imageSrc: 'lol-worlds.jpg'});
 })
