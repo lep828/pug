@@ -25,4 +25,9 @@ $(document).ready(function() {
     }
   });
   $(".alert-box").fadeOut(2000);
+
+  var newGames = $('.new_game');
+  for (var i = 0; i < newGames.length; i++) {
+    if (i % 2 == 0) $(newGames[i]).css("display", "none");
+  }
 })
