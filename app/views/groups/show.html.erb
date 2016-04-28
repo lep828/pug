@@ -61,7 +61,6 @@
     
     <div class="content" id="panel3">
       <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @group }%>
-
       <% if user_signed_in? %>
       <div class="text-center">
         <a href="#" data-reveal-id="myModal", class="button tiny radius devise-links">Comment</a>

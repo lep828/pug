@@ -187,6 +187,11 @@ body,html{
   }
 }
 
+.parallax-window {
+  min-height: 400px;
+  background: transparent;
+}
+
 // SMALL SCREENS
 @media only screen and (max-width: 40em) {
   .group-content {
