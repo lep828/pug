@@ -6,7 +6,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href='https://fonts.googleapis.com/css?family=Glegoo' rel='stylesheet' type='text/css'>
-  
+  <%= favicon_link_tag 'pug.png' %>
+
   <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
   <%= stylesheet_link_tag    "application" %>
@@ -25,7 +26,7 @@
         <%= render 'content' %>
 
         <a class="exit-off-canvas"></a>
-        <%#= render 'footer' %>
+        <%= render 'footer' %>
 
       </div>
     </div>

@@ -144,13 +144,14 @@ body,html{
   margin-top: 3em;
   text-align: center;
   a {
-    margin-bottom: 0;
+    margin: 0 0.5em;
   }
   p {
     margin-bottom: 4em;
   }
 }
 
+// SMALL SCREENS
 @media only screen and (max-width: 40em) {
   .group-content {
     p {
@@ -159,7 +160,21 @@ body,html{
   }
   .group-image {
     img {
-      margin-left: 2em;
+      margin-left: 1em;
+    }
+  }
+  .landing-page {
+    background-image: url("small-pug.jpg");
+    background-size: cover;
+    height: 50vh;
+    .landing-content {
+      text-align: center;
+      margin-top: 20em;
+    }
+  }
+  footer {
+    .top-line {
+      margin-top: 15em;
     }
   }
 }

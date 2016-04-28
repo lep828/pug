@@ -1,21 +1,23 @@
 <section class="landing-page">
   <div class="row">
   
-    <div class="medium-5 medium-offset-7 columns landing-content">
-    <h2 id="home-heading">Pick Up Group</h2>
-    <p>Pick Up Group or P.U.G is a website where gamers can go to and find users who play the games and form groups.</p>
+    <div class="landing-content">
+      <div class="medium-5 medium-offset-7 columns">
+      <h2 id="home-heading">Pick Up Group</h2>
+      <p>Pick Up Group or P.U.G is a website where gamers can go to and find users who play the games   and form groups.</p>
+      </div>
+  
+      <div class="medium-5 medium-offset-7 columns">
+      <% if user_signed_in? %>
+        <%= link_to "Groups", groups_path, class: "button tiny radius" %> 
+        <%= link_to "Users", users_path, class: "button tiny radius" %> 
+        <%= link_to "Games", games_path, class: "button tiny radius" %> 
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "button small radius" %>
+        <span id="or">Or</span>
+        <%= link_to "Register", new_user_registration_path, class: "button small radius" %>
+      </div>
+      <% end %>
     </div>
-
-    <div class="medium-5 medium-offset-7 columns landing-content">
-    <% if user_signed_in? %>
-      <%= link_to "Groups", groups_path, class: "button tiny radius" %> 
-      <%= link_to "Users", users_path, class: "button tiny radius" %> 
-      <%= link_to "Games", games_path, class: "button tiny radius" %> 
-    <% else %>
-      <%= link_to "Login", new_user_session_path, class: "button small radius" %>
-      <span id="or">Or</span>
-      <%= link_to "Register", new_user_registration_path, class: "button small radius" %>
-    </div>
-    <% end %>
   </div>
 </section>

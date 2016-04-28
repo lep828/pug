@@ -2,7 +2,7 @@
   <div class="game-image">
     <%= image_tag game.image %>
   </div>
-  <div>
+  <div class="top-margin">
     <%= link_to "View", game, class: "button tiny right radius" %>
     <h2><%= game.name %></h2>
     <p><%= game.description %></p>
@@ -22,8 +22,8 @@
               <% end %>
             </select>
             </div>
-            <div class="medium-3 columns">
-              <%= f.submit "Add game", class: "button tiny radius search" %>
+            <div class="medium-2 columns">
+              <%= f.submit "Add game", class: "button small radius search right" %>
             </div>
           <% end %>
         <% end %>
