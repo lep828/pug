@@ -11,6 +11,7 @@
     <h4 class="hidden-for-small">Founder: <%= User.find(group.creator_id).username %></h4>
     <p><%= group.description %></p>
     <%= link_to "Show", group, class: "button tiny radius" %>
+
     <% if user_signed_in? %>
       <% if current_user.subscribers.where(group_id: group.id).present? == false %>
         <%= link_to "Join!", group_subscribers_path(group), method: :post, class: "button tiny radius"  %>
@@ -21,6 +22,6 @@
         <%= link_to "Leave Group", group_subscriber_path(group, id: current_user.id), method: :delete,  class: "button tiny radius" %>
       <% end %>
     <% end %>
-  </div>
 
+  </div>
 </div>
