@@ -1,11 +1,10 @@
 <section class="main-section">
   <% flash.each do |name, message| %>
-  <div class="<%= name %> alert-<%= name %> alert-box" role="alert" data-alert>
-    <%= message %>
-    <a href="#" class="close">&times;</a>
-  </div>
+    <div class="<%= name %> alert-<%= name %> alert-box" role="alert" data-alert>
+      <%= message %>
+      <a href="#" class="close">&times;</a>
+    </div>
   <% end %>
 
   <%= yield %>
-
 </section>

@@ -49,7 +49,7 @@
             <p><%= user.description %></p>
             <%= link_to "Profile", user_path(user), class: "button tiny radius" %>
             <% if subscriber.admin == false && user_signed_in? %>
-              <% if @group.subscribers.where(user_id: current_user.id).where(admin: true) %>
+              <% if @group.subscribers.where(user_id: current_user.id).where(admin: true).present? %>
                 <%= link_to "Make Admin", admin_group_subscriber_path(group_id: @group.id, id: subscriber.id), class: "button tiny radius" %>
               <% end %>
             <% end %>

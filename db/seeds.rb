@@ -32,12 +32,12 @@ g1 = Group.create!(name: "Memers not Dreamers", description: "We made it.", crea
 g1.group_image = Rails.root.join("app/assets/images/fillmurray.jpg").open
 g1.save
 
-g2 = Group.create!(name: "Disgusted Strategy", description: "RTS games are life, but Street Fighter is good too.", creator_id: u3.id)
-g2.group_image = Rails.root.join("app/assets/images/rts.png").open
+g2 = Group.create!(name: "Stock Group", description: "We only accept stock people.", creator_id: u4.id)
+g2.group_image = Rails.root.join("app/assets/images/stock-group.jpg").open
 g2.save
 
-g3 = Group.create!(name: "Stock Group", description: "We only accept stock people.", creator_id: u4.id)
-g3.group_image = Rails.root.join("app/assets/images/stock-group.jpg").open
+g3 = Group.create!(name: "Disgusted Strategy", description: "RTS games are life, but Street Fighter is good too.", creator_id: u3.id)
+g3.group_image = Rails.root.join("app/assets/images/rts.png").open
 g3.save
 
 
@@ -45,11 +45,14 @@ g1.games.create!(name: "Fifa 16", description: "FIFA 16 innovates across the ent
 
 g1.games.create!(name: "Destiny", description: "From the Creators of Halo and the company that brought you Call of Duty. In Destiny you are a Guardian of the last city on Earth, able to wield incredible power. Explore the ancient ruins ourf our solar system, from the red dunes of Mars to the lush jungles of Venus. Defeat Earth’s enemies. Reclaim all that we have lost. Become legend.", image:"https://www.destinythegame.com/content/dam/atvi/bungie/dtg-comet/wtb/destiny.jpg")
 
-g3.games.create!(name: "Call of Duty: Black Ops 3", description: "Call of Duty: Black Ops 3 deploys players into a dark, twisted future where a new breed of Black Ops soldiers emerges and the lines are blurred between our own humanity and the technology we created to stay ahead, in a world where cutting-edge military robotics define warfare.", image:"https://store.playstation.com/store/api/chihiro/00_09_000/container/GB/en/999/EP0002-CUSA02624_00-BLACKOPS3PREBASE/1461335328000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100")
+g2.games.create!(name: "Call of Duty: Black Ops 3", description: "Call of Duty: Black Ops 3 deploys players into a dark, twisted future where a new breed of Black Ops soldiers emerges and the lines are blurred between our own humanity and the technology we created to stay ahead, in a world where cutting-edge military robotics define warfare.", image:"https://store.playstation.com/store/api/chihiro/00_09_000/container/GB/en/999/EP0002-CUSA02624_00-BLACKOPS3PREBASE/1461335328000/image?_version=00_09_000&platform=chihiro&w=225&h=225&bg_color=000000&opacity=100")
 
-g2.games.create!(name: "Street Fighter 5", description: "The legendary fighting franchise returns with STREET FIGHTER® V! Stunning visuals depict the next generation of World Warriors in unprecedented detail, while exciting and accessible battle mechanics deliver endless fighting fun that both beginners and veterans can enjoy.", image: "https://upload.wikimedia.org/wikipedia/en/8/80/Street_Fighter_V_box_artwork.png")
+g2.games.create!(name: "League of Legends", description: "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements. Two teams of powerful champions, each with a unique design and playstyle, battle head-to-head across multiple battlefields and game modes.", image: "https://i1.sndcdn.com/avatars-000050521043-1hy6i1-t500x500.jpg")
 
-g2.games.create!(name: "Starcraft 2", description: "In typical real-time strategy games, players build armies and vie for control of the battlefield. The armies in play can be as small as a single squad of Marines or as large as a full-blown planetary invasion force. As commander, you observe the battlefield from a top-down perspective and issue orders to your units in real time. Strategic thinking is key to success; you need to gather information about your opponents, anticipate their moves, outflank their attacks, and formulate a winning strategy.", image: "http://static.mnium.org/images/contenu/actus/sc2/mini_logo_starcraft2_sc2.png")
+g3.games.create!(name: "Street Fighter 5", description: "The legendary fighting franchise returns with STREET FIGHTER® V! Stunning visuals depict the next generation of World Warriors in unprecedented detail, while exciting and accessible battle mechanics deliver endless fighting fun that both beginners and veterans can enjoy.", image: "https://upload.wikimedia.org/wikipedia/en/8/80/Street_Fighter_V_box_artwork.png")
+
+g3.games.create!(name: "Starcraft 2", description: "In typical real-time strategy games, players build armies and vie for control of the battlefield. The armies in play can be as small as a single squad of Marines or as large as a full-blown planetary invasion force. As commander, you observe the battlefield from a top-down perspective and issue orders to your units in real time. Strategic thinking is key to success; you need to gather information about your opponents, anticipate their moves, outflank their attacks, and formulate a winning strategy.", image: "http://static.mnium.org/images/contenu/actus/sc2/mini_logo_starcraft2_sc2.png")
+
 
 Subscriber.create!(group_id: g1.id, user_id: u1.id, admin: true)
 Subscriber.create!(group_id: g1.id, user_id: u2.id, admin: false)
