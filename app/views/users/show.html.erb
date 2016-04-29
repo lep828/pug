@@ -22,9 +22,9 @@
   <div class="medium-5 medium-offset-1 columns panel radius group-buttons-container end" data-equalizer-watch>
     <div class="group-image">
       <% if group.group_image.present? %>
-        <%= image_tag group.group_image.detail.url, class: "user" %>
+        <%= image_tag group.group_image.detail.url, class: "show" %>
       <% else %>
-        <%= image_tag 'default-group.png', class: "user" %>
+        <%= image_tag 'default-group.png', class: "show" %>
       <% end %>
     </div>
     <div class="group-content">

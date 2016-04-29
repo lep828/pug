@@ -7,11 +7,46 @@
     <p><%= @game.description %></p>
   </div>
 </div>
+
+<% if @game.groups.present? %>
+  <div class="top-line row"></div>
+  <h2 class="text-center">Groups that play <%= @game.name %></h2>
+    <div class="row" data-equalizer>
+      <% @game.groups.each do |group| %>
+      <div class="medium-5 medium-offset-1 columns panel radius group-buttons-container end" data-equalizer-watch>
+        <div class="group-image">
+          <% if group.group_image.present? %>
+            <%= image_tag group.group_image.detail.url, class: "show" %>
+          <% else %>
+            <%= image_tag 'default-group.png', class: "show" %>
+          <% end %>
+        </div>
+        <div class="group-content">
+          <h3><%= group.name %></h3>
+          <h5>Founder: <%= User.find(group.creator_id).username %></h5>
+          <p><%= group.description %></p>
+          <%= link_to "Show", group, class: "button tiny radius" %>
+          <% if user_signed_in? %>
+            <% if current_user.subscribers.where(group_id: group.id).present? == false %>
+              <%= link_to "Join!", group_subscribers_path(group), method: :post, class: "button tiny radius"   %>
+            <% elsif current_user.subscribers.where(admin: true).where(group_id: group.id).present? %>
+              <%= link_to "Edit", edit_group_path(group), class: "button tiny radius" %>
+              <%= link_to "Disband", group, method: :delete, class: "button tiny radius" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+<% end %>
+
 <div class="row">
   <%= render partial: 'comments/comment', collection: @comments, locals: { commentable: @game } %>
-<a href="#" data-reveal-id="myModal", class="button right radius devise-links">Comment</a>
-
-<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <%= render partial: 'comments/form', locals: { commentable: @game } %>
-</div>
+  <div class="top-line"></div>
+  <div class="text-center">
+   <a href="#" data-reveal-id="myModal", class="button small radius devise-links">Comment</a>
+  </div>
+  <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <%= render partial: 'comments/form', locals: { commentable: @game } %>
+  </div>
 </div>
