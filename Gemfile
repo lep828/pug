@@ -50,3 +50,4 @@ gem 'rmagick'
 gem 'acts_as_commentable', '4.0.2'
 gem 'ransack'
 gem 'rails_12factor', group: :production
+gem 'fog'
