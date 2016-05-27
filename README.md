@@ -2,7 +2,7 @@
 
 P.U.G is a website where gamers can go to and find users who play the same games and form groups to play together.
 
-Try it for yourself [P.U.G](https://whispering-crag-97067.herokuapp.com/)
+Try it for yourself [P.U.G](https://pickupgroup.herokuapp.com/)
 
 ![alt text](./app/assets/readme-images/landing-page.png)
 
@@ -15,13 +15,13 @@ This project had to:
 
 ## Planning
 
-#### Trello
+### Trello
 ![alt text](./app/assets/readme-images/trello.png)
-Trello was used to track what tasks I was working on and what I needed to do next.
+Trello was used to keep track of what tasks I was working on and what I needed to do next. I found this useful because I am usually someone who jumps around tasks when I should finish one and move onto the next, so this taught me some restraint.
 
-#### Balsamiq
+### Balsamiq
 ![alt text](./app/assets/readme-images/balsamiq.png)
-Balsamiq was used to wireframe and plan how I wanted to structure my website.
+Balsamiq was used to wireframe, plan how I wanted to structure my website and which key features I wanted. I found wireframing useful as designing for mobile first you have limited space, so you have to choose the most important features to put on first.
 
 ## Pain Points
 One of the biggest struggles for me was filtering when to display the add to Group button on the games index page. It had to check if the current user is an Admin in a group and that said group doesn't already have that game.
@@ -38,3 +38,4 @@ One of the biggest struggles for me was filtering when to display the add to Gro
 * acts\_as\_comentable
 * Parallax.js
 * jQuery
+* PostgreSQL
