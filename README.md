@@ -29,6 +29,7 @@ One of the biggest struggles for me was filtering when to display the add to Gro
 
 ## Technologies used
 
+* Ruby
 * Ruby on Rails
 * Devise
 * Carrierwave
